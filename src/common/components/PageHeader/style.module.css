@@ -1,0 +1,86 @@
+.header {
+  color: #62646a;
+}
+
+.header .txtSearch {
+  border-width: 1px 0 1px 1px;
+  border-radius: 4px 0 0 4px;
+  border-color: #c5c6c9;
+  padding: 0 5px 0 20px;
+  height: 40px;
+  font-size: 16px;
+  color: #62646a;
+  width: 80%;
+  outline: none;
+}
+
+.header .btnSearch {
+  height: 40px;
+  padding: 0 16px;
+  background-color: #222325;
+  border-radius: 0 4px 4px 0;
+}
+
+.header .btnSearch svg {
+  fill: #fff;
+}
+
+.header .navbar .navIcon {
+  fill: #62646a;
+}
+
+.header .navbar .activeLink {
+  color: #1e1692;
+}
+
+.header .navbar a:hover,
+.header .navbar a:hover .navIcon {
+  color: #1dbf73;
+  fill: #1dbf73;
+}
+
+.header .btnJoin {
+  border-width: 1px;
+  border-color: #19a463;
+  color: #19a463;
+  font-size: 14px;
+}
+
+.header .btnJoin:hover {
+  background-color: #19a463;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.header .headerBorder {
+  border-bottom: 1px solid #e4e5e7;
+}
+
+/* Mobile Css */
+.drawerJoinButton {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #1dbf73;
+}
+
+.sidebarMenu,
+.sidebarMenu a {
+  color: #95979d;
+}
+
+.txtSearchMobile {
+  border-width: 1px;
+  border-radius: 4px;
+}
+/* Mobile Css */
+
+@media screen and (max-width: 768px) {
+  .header .btnJoin {
+    color: #62646a;
+    border-color: transparent;
+  }
+
+  .header .headerBorder {
+    border-bottom: 1px solid transparent;
+  }
+}

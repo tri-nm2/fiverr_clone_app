@@ -1,0 +1,130 @@
+.normal {
+  background-color: transparent;
+  color: #fff;
+}
+
+.normal .navbar a:hover {
+  color: #fff;
+}
+
+.normal .logo svg g:first-of-type,
+.normal .navIcon {
+  fill: #fff;
+}
+
+.normal .btnJoin {
+  border-width: 1px;
+  border-color: #fff;
+  font-size: 14px;
+}
+
+.normal .btnJoin:hover {
+  background-color: #19a463;
+  border-color: #19a463;
+  transition: all 0.2s ease;
+}
+
+.scroll {
+  background-color: #fff;
+  color: #62646a;
+}
+
+.scroll .headerBorder {
+  border-bottom: 1px solid #e4e5e7;
+}
+
+.scroll .logo svg g:first-of-type {
+  fill: rgb(64, 65, 69);
+}
+
+.scroll .navbar .navIcon {
+  fill: #62646a;
+}
+
+.scroll .navbar a:hover,
+.scroll .navbar a:hover .navIcon {
+  color: #1dbf73;
+  fill: #1dbf73;
+}
+
+.scroll .btnJoin {
+  border-width: 1px;
+  border-color: #19a463;
+  color: #19a463;
+  font-size: 14px;
+}
+
+.scroll .btnJoin:hover {
+  background-color: #19a463;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.scroll .navbar .activeLink {
+  color: #1e1692;
+}
+
+.txtSearch {
+  border-width: 1px 0 1px 1px;
+  border-radius: 4px 0 0 4px;
+  border-color: #c5c6c9;
+  padding: 0 5px 0 20px;
+  height: 40px;
+  font-size: 16px;
+  color: #62646a;
+  width: 80%;
+  outline: none;
+}
+
+.btnSearch {
+  height: 40px;
+  padding: 0 16px;
+  background-color: #222325;
+  border-radius: 0 4px 4px 0;
+}
+
+.btnSearch svg {
+  fill: #fff;
+}
+
+.btnSearch:hover {
+  background-color: #404145;
+}
+
+/* Mobile Css */
+.drawerJoinButton {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #1dbf73;
+}
+
+.sidebarMenu,
+.sidebarMenu a {
+  color: #95979d;
+}
+/* Mobile Css */
+
+@media screen and (max-width: 768px) {
+  .mobileHeader {
+    background-color: #fff;
+  }
+
+  .mobileHeader .logo svg g:first-of-type {
+    fill: rgb(64, 65, 69);
+  }
+
+  .mobileHeader .btnJoin {
+    color: #62646a;
+    border-color: transparent;
+  }
+
+  .mobileHeader .btnJoin:hover {
+    color: #62646a;
+    border-color: transparent;
+    background-color: transparent;
+  }
+
+  .mobileCateNavbar {
+    display: none;
+  }
+}

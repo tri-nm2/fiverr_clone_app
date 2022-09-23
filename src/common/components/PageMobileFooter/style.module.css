@@ -1,0 +1,11 @@
+.footerBottom {
+  color: #74767e;
+}
+
+.footerBottom .copyRight {
+  color: #b5b6ba;
+}
+
+.footerBottom span svg {
+  fill: #74767e;
+}
