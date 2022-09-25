@@ -89,3 +89,38 @@
 .businessRight img {
   width: 100%;
 }
+
+.logoMaker {
+  background-color: #446ee7;
+}
+
+.logoMaker .btnTry {
+  border: 1px solid transparent;
+  padding: 10px 40px;
+  color: #446ee7;
+  background-color: #fff;
+  margin-bottom: 4px;
+  transition: all 70ms;
+}
+
+.logoMaker .btnTry:hover {
+  background-color: #d4defb;
+}
+
+.guideHeader a {
+  color: #446ee7;
+}
+
+.guideBody a:hover {
+  color: currentColor;
+}
+
+.btnStarted {
+  padding: 10px 30px;
+  background-color: #1dbf73;
+  transition: all 70ms;
+}
+
+.btnStarted:hover {
+  background-color: #19a463;
+}

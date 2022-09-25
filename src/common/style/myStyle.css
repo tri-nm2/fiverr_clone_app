@@ -42,3 +42,11 @@
   height: 16px;
   margin-top: 3px;
 }
+
+.testimonial .ant-carousel .slick-prev {
+  left: 15px;
+}
+
+.testimonial .ant-carousel .slick-next {
+  right: 15px;
+}

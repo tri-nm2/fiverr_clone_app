@@ -19,7 +19,7 @@ function HomeServivesCarousel() {
       <Carousel {...settings}>
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Build your brand</span>
                 Logo Design
@@ -34,7 +34,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Customize your site</span>
                 WordPress
@@ -49,7 +49,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Share your message</span>
                 Voice Over
@@ -64,7 +64,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Engage your audience</span>
                 Video Explainer
@@ -79,7 +79,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Reach more customers</span>
                 Social Media
@@ -94,7 +94,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Unlock growth online</span>
                 SEO
@@ -109,7 +109,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Color your dreams</span>
                 Illustration
@@ -124,7 +124,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Go global</span>
                 Translation
@@ -139,7 +139,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Learn your business</span>
                 Data Entry
@@ -154,7 +154,7 @@ function HomeServivesCarousel() {
 
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
-            <Link className="rounded">
+            <Link to="/" className="rounded">
               <p className="text-2xl font-semibold text-white">
                 <span className="text-sm block">Showcase your story</span>
                 Book Covers
