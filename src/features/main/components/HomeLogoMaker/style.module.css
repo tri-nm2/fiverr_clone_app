@@ -1,0 +1,16 @@
+.logoMaker {
+  background-color: #446ee7;
+}
+
+.logoMaker .btnTry {
+  border: 1px solid transparent;
+  padding: 10px 40px;
+  color: #446ee7;
+  background-color: #fff;
+  margin-bottom: 4px;
+  transition: all 70ms;
+}
+
+.logoMaker .btnTry:hover {
+  background-color: #d4defb;
+}

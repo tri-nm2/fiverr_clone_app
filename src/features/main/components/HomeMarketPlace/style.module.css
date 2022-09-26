@@ -1,0 +1,24 @@
+.marketPlaceLink {
+  position: relative;
+}
+
+.marketPlaceLink:hover {
+  color: #000;
+}
+
+.marketPlaceLink::before {
+  content: "";
+  position: absolute;
+  top: 45px;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 0 0 8px;
+  width: 48px;
+  border-bottom: 2px solid #c5c6c9;
+  transition: all 0.2s ease-in-out;
+}
+
+.marketPlaceLink:hover::before {
+  width: 96px;
+  border-color: #1dbf73;
+}

@@ -15,7 +15,7 @@ function HomeProjectCarousel() {
   const { Meta } = Card;
 
   return (
-    <div className={`py-10 px-5 ${Style.project}`}>
+    <div className={`py-10 my-10 px-5 ${Style.project}`}>
       <div
         className={`flex justify-between items-start ${Style.projectHeader}`}
       >

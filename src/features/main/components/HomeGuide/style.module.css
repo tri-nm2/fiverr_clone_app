@@ -1,0 +1,7 @@
+.guideHeader a {
+  color: #446ee7;
+}
+
+.guideBody a:hover {
+  color: currentColor;
+}
