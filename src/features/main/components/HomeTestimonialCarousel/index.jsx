@@ -16,15 +16,20 @@ function HomeTestimonialCarousel() {
     <div className="testimonial py-10">
       <Carousel {...settings}>
         <div>
-          <div className="flex px-10">
-            <div className={`w-2/5 rounded relative ${Style.imageContent}`}>
+          <div className="flex px-10 md:flex-row flex-col">
+            <div
+              className={`md:w-2/5 w-full md:mb-0 mb-5 rounded relative ${Style.imageContent}`}
+            >
               <img
+                className="w-full"
                 src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173396/testimonial-video-still-lavender.jpg"
                 alt="error"
               ></img>
             </div>
 
-            <div className={`pl-16 pr-12 w-3/5 ${Style.textContent}`}>
+            <div
+              className={`md:pl-16 md:pr-12 md:w-3/5 w-full pl-0 pr-0 ${Style.textContent}`}
+            >
               <h5 className="flex items-center text-xl">
                 Brighid Gannon (DNP, PMHNP-BC), Co-Founder
                 <span className="h-9 pl-3 ml-3 border-l">
@@ -48,15 +53,20 @@ function HomeTestimonialCarousel() {
         </div>
 
         <div>
-          <div className="flex px-10">
-            <div className={`w-2/5 rounded relative ${Style.imageContent}`}>
+          <div className="flex px-10 md:flex-row flex-col">
+            <div
+              className={`md:w-2/5 w-full md:mb-0 mb-5 rounded relative ${Style.imageContent}`}
+            >
               <img
+                className="w-full"
                 src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173395/testimonial-video-still-haerfest.jpg"
                 alt="error"
               ></img>
             </div>
 
-            <div className={`pl-16 pr-12 w-3/5 ${Style.textContent}`}>
+            <div
+              className={`md:pl-16 md:pr-12 md:w-3/5 w-full pl-0 pr-0 ${Style.textContent}`}
+            >
               <h5 className="flex items-center text-xl">
                 Tim and Dan Joo, Co-Founders
                 <span className="h-9 pl-3 ml-3 border-l">
@@ -79,15 +89,20 @@ function HomeTestimonialCarousel() {
         </div>
 
         <div>
-          <div className="flex px-10">
-            <div className={`w-2/5 rounded relative ${Style.imageContent}`}>
+          <div className="flex px-10 md:flex-row flex-col">
+            <div
+              className={`md:w-2/5 w-full md:mb-0 mb-5 rounded relative ${Style.imageContent}`}
+            >
               <img
+                className="w-full"
                 src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173399/testimonial-video-still-rooted.jpg"
                 alt="error"
               ></img>
             </div>
 
-            <div className={`pl-16 pr-12 w-3/5 ${Style.textContent}`}>
+            <div
+              className={`md:pl-16 md:pr-12 md:w-3/5 w-full pl-0 pr-0 ${Style.textContent}`}
+            >
               <h5 className="flex items-center text-xl">
                 Kay Kim, Co-Founder
                 <span className="h-9 pl-3 ml-3 border-l">
@@ -112,15 +127,20 @@ function HomeTestimonialCarousel() {
         </div>
 
         <div>
-          <div className="flex px-10">
-            <div className={`w-2/5 rounded relative ${Style.imageContent}`}>
+          <div className="flex px-10 md:flex-row flex-col">
+            <div
+              className={`md:w-2/5 w-full md:mb-0 mb-5 rounded relative ${Style.imageContent}`}
+            >
               <img
+                className="w-full"
                 src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_560,dpr_1.0/v1/attachments/generic_asset/asset/42a6fd208670a0361b38bd72b47b9317-1599519173414/testimonial-video-still-naadam.jpg"
                 alt="error"
               ></img>
             </div>
 
-            <div className={`pl-16 pr-12 w-3/5 ${Style.textContent}`}>
+            <div
+              className={`md:pl-16 md:pr-12 md:w-3/5 w-full pl-0 pr-0 ${Style.textContent}`}
+            >
               <h5 className="flex items-center text-xl">
                 Caitlin Tormey, Chief Commercial Officer
                 <span className="h-9 pl-3 ml-3 border-l">

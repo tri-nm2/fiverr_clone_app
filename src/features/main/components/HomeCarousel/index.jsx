@@ -15,17 +15,17 @@ function HomeCarousel() {
     autoplaySpeed: 5000,
     cssEase: "linear",
   };
-  
+
   return (
     <div>
       <Carousel {...settings}>
         <div className={`${Style.slide} ${Style.bg1}`}>
           <div className="flex items-center h-full">
-            <div className="flex flex-col text-white text-base w-1/2 pl-10">
+            <div className="flex flex-col text-white text-base md:w-1/2 w-full pl-10">
               <h1 className={`text-white font-semibold mb-10 ${Style.title}`}>
                 Find the perfect <i>freelance</i> services for your business
               </h1>
-              <div className="flex relative mb-10">
+              <div className="flex relative mb-10 md:flex-row flex-col">
                 <span
                   className={`${Style.txtSearchIcon}`}
                   aria-hidden="true"
@@ -41,16 +41,16 @@ function HomeCarousel() {
                   </svg>
                 </span>
                 <input
-                  className={`w-3/4 rounded-l text-base ${Style.txtSearch}`}
+                  className={`w-3/4 rounded-l text-base md:mb-0 mb-3 ${Style.txtSearch}`}
                   placeholder='Try "building mobile app"'
                 ></input>
                 <button
-                  className={`w-1/4 rounded-r font-semibold ${Style.btnSearch}`}
+                  className={`md:w-1/4 w-3/4 rounded-r font-semibold ${Style.btnSearch}`}
                 >
                   Search
                 </button>
               </div>
-              <div className="flex">
+              <div className="md:flex hidden">
                 <span className="mr-3">Popular:</span>
                 <div
                   className={`flex justify-around space-x-3 font-semibold ${Style.link}`}
@@ -63,8 +63,8 @@ function HomeCarousel() {
               </div>
             </div>
             <div
-              className="flex justify-end items-end w-1/2 h-full text-white text-base 
-              pb-10 pr-10 font-semibold"
+              className="md:flex justify-end items-end w-1/2 h-full text-white text-base 
+              pb-10 pr-10 font-semibold hidden"
             >
               <span>Andrea Fashion Designer</span>
             </div>
@@ -73,11 +73,11 @@ function HomeCarousel() {
 
         <div className={`${Style.slide} ${Style.bg2}`}>
           <div className="flex items-center h-full">
-            <div className="flex flex-col text-white text-base w-1/2 pl-10">
+            <div className="flex flex-col text-white text-base md:w-1/2 w-full pl-10">
               <h1 className={`text-white font-semibold mb-10 ${Style.title}`}>
                 Find the perfect <i>freelance</i> services for your business
               </h1>
-              <div className="flex relative mb-10">
+              <div className="flex relative mb-10 md:flex-row flex-col">
                 <span
                   className={`${Style.txtSearchIcon}`}
                   aria-hidden="true"
@@ -93,16 +93,16 @@ function HomeCarousel() {
                   </svg>
                 </span>
                 <input
-                  className={`w-3/4 rounded-l text-base ${Style.txtSearch}`}
+                  className={`w-3/4 rounded-l text-base md:mb-0 mb-3 ${Style.txtSearch}`}
                   placeholder='Try "building mobile app"'
                 ></input>
                 <button
-                  className={`w-1/4 rounded-r font-semibold ${Style.btnSearch}`}
+                  className={`md:w-1/4 w-3/4 rounded-r font-semibold ${Style.btnSearch}`}
                 >
                   Search
                 </button>
               </div>
-              <div className="flex">
+              <div className="md:flex hidden">
                 <span className="mr-3">Popular:</span>
                 <div
                   className={`flex justify-around space-x-3 font-semibold ${Style.link}`}
@@ -115,8 +115,8 @@ function HomeCarousel() {
               </div>
             </div>
             <div
-              className="flex justify-end items-end w-1/2 h-full text-white text-base 
-              pb-10 pr-10 font-semibold"
+              className="md:flex justify-end items-end w-1/2 h-full text-white text-base 
+              pb-10 pr-10 font-semibold hidden"
             >
               <span>Moon Marketing Expert</span>
             </div>
@@ -125,11 +125,11 @@ function HomeCarousel() {
 
         <div className={`${Style.slide} ${Style.bg3}`}>
           <div className="flex items-center h-full">
-            <div className="flex flex-col text-white text-base w-1/2 pl-10">
+            <div className="flex flex-col text-white text-base md:w-1/2 w-full pl-10">
               <h1 className={`text-white font-semibold mb-10 ${Style.title}`}>
                 Find the perfect <i>freelance</i> services for your business
               </h1>
-              <div className="flex relative mb-10">
+              <div className="flex relative mb-10 md:flex-row flex-col">
                 <span
                   className={`${Style.txtSearchIcon}`}
                   aria-hidden="true"
@@ -145,16 +145,16 @@ function HomeCarousel() {
                   </svg>
                 </span>
                 <input
-                  className={`w-3/4 rounded-l text-base ${Style.txtSearch}`}
+                  className={`w-3/4 rounded-l text-base md:mb-0 mb-3 ${Style.txtSearch}`}
                   placeholder='Try "building mobile app"'
                 ></input>
                 <button
-                  className={`w-1/4 rounded-r font-semibold ${Style.btnSearch}`}
+                  className={`md:w-1/4 w-3/4 rounded-r font-semibold ${Style.btnSearch}`}
                 >
                   Search
                 </button>
               </div>
-              <div className="flex">
+              <div className="md:flex hidden">
                 <span className="mr-3">Popular:</span>
                 <div
                   className={`flex justify-around space-x-3 font-semibold ${Style.link}`}
@@ -167,8 +167,8 @@ function HomeCarousel() {
               </div>
             </div>
             <div
-              className="flex justify-end items-end w-1/2 h-full text-white text-base 
-              pb-10 pr-10 font-semibold"
+              className="md:flex justify-end items-end w-1/2 h-full text-white text-base 
+              pb-10 pr-10 font-semibold hidden"
             >
               <span>Ritika Shoemaker and Designer</span>
             </div>
@@ -177,11 +177,11 @@ function HomeCarousel() {
 
         <div className={`${Style.slide} ${Style.bg4}`}>
           <div className="flex items-center h-full">
-            <div className="flex flex-col text-white text-base w-1/2 pl-10">
+            <div className="flex flex-col text-white text-base md:w-1/2 w-full pl-10">
               <h1 className={`text-white font-semibold mb-10 ${Style.title}`}>
                 Find the perfect <i>freelance</i> services for your business
               </h1>
-              <div className="flex relative mb-10">
+              <div className="flex relative mb-10 md:flex-row flex-col">
                 <span
                   className={`${Style.txtSearchIcon}`}
                   aria-hidden="true"
@@ -197,16 +197,16 @@ function HomeCarousel() {
                   </svg>
                 </span>
                 <input
-                  className={`w-3/4 rounded-l text-base ${Style.txtSearch}`}
+                  className={`w-3/4 rounded-l text-base md:mb-0 mb-3 ${Style.txtSearch}`}
                   placeholder='Try "building mobile app"'
                 ></input>
                 <button
-                  className={`w-1/4 rounded-r font-semibold ${Style.btnSearch}`}
+                  className={`md:w-1/4 w-3/4 rounded-r font-semibold ${Style.btnSearch}`}
                 >
                   Search
                 </button>
               </div>
-              <div className="flex">
+              <div className="md:flex hidden">
                 <span className="mr-3">Popular:</span>
                 <div
                   className={`flex justify-around space-x-3 font-semibold ${Style.link}`}
@@ -219,8 +219,8 @@ function HomeCarousel() {
               </div>
             </div>
             <div
-              className="flex justify-end items-end w-1/2 h-full text-white text-base 
-              pb-10 pr-10 font-semibold"
+              className="md:flex justify-end items-end w-1/2 h-full text-white text-base 
+              pb-10 pr-10 font-semibold hidden"
             >
               <span>Zach Bar Owner</span>
             </div>
@@ -229,11 +229,11 @@ function HomeCarousel() {
 
         <div className={`${Style.slide} ${Style.bg5}`}>
           <div className="flex items-center h-full">
-            <div className="flex flex-col text-white text-base w-1/2 pl-10">
+            <div className="flex flex-col text-white text-base md:w-1/2 w-full pl-10">
               <h1 className={`text-white font-semibold mb-10 ${Style.title}`}>
                 Find the perfect <i>freelance</i> services for your business
               </h1>
-              <div className="flex relative mb-10">
+              <div className="flex relative mb-10 md:flex-row flex-col">
                 <span
                   className={`${Style.txtSearchIcon}`}
                   aria-hidden="true"
@@ -249,16 +249,16 @@ function HomeCarousel() {
                   </svg>
                 </span>
                 <input
-                  className={`w-3/4 rounded-l text-base ${Style.txtSearch}`}
+                  className={`w-3/4 rounded-l text-base md:mb-0 mb-3 ${Style.txtSearch}`}
                   placeholder='Try "building mobile app"'
                 ></input>
                 <button
-                  className={`w-1/4 rounded-r font-semibold ${Style.btnSearch}`}
+                  className={`md:w-1/4 w-3/4 rounded-r font-semibold ${Style.btnSearch}`}
                 >
                   Search
                 </button>
               </div>
-              <div className="flex">
+              <div className="md:flex hidden">
                 <span className="mr-3">Popular:</span>
                 <div
                   className={`flex justify-around space-x-3 font-semibold ${Style.link}`}
@@ -271,8 +271,8 @@ function HomeCarousel() {
               </div>
             </div>
             <div
-              className="flex justify-end items-end w-1/2 h-full text-white text-base 
-              pb-10 pr-10 font-semibold"
+              className="md:flex justify-end items-end w-1/2 h-full text-white text-base 
+              pb-10 pr-10 font-semibold hidden"
             >
               <span>Gabrielle Video Editor</span>
             </div>

@@ -7,7 +7,7 @@ function HomeMarketPlace() {
     <div className="py-10">
       <p className="text-3xl font-bold ml-10 mb-10">Explore the marketplace</p>
       <div className="flex flex-wrap">
-        <div className="w-1/5 mb-12">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -21,7 +21,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -35,7 +35,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -49,7 +49,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -63,7 +63,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -77,7 +77,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -91,7 +91,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -105,7 +105,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}
@@ -119,7 +119,7 @@ function HomeMarketPlace() {
           </Link>
         </div>
 
-        <div className="w-1/5">
+        <div className="md:w-1/5 sm:w-1/3 w-1/2 mb-12">
           <Link
             to="/"
             className={`flex flex-col items-center text-base font-semibold ${Style.marketPlaceLink}`}

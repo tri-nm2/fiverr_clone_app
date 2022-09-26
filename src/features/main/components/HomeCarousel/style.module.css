@@ -47,6 +47,7 @@
 }
 
 .btnSearch {
+  height: 48px;
   background-color: #1dbf73;
   transition: all 70ms;
 }
@@ -65,4 +66,11 @@
 .link a:hover {
   background-color: #fff;
   color: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 40px;
+    line-height: 48px;
+  }
 }

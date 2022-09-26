@@ -25,7 +25,10 @@ function HomeGuide() {
         </Link>
       </div>
 
-      <div className={`grid grid-cols-3 ${Style.guideBody}`}>
+      <div
+        className={`grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 
+        md:gap-0 gap-4 ${Style.guideBody}`}
+      >
         <div className="px-5">
           <Link to="/">
             <img

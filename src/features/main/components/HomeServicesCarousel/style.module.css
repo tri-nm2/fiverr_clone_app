@@ -1,5 +1,5 @@
 .items {
-    width: 220px;
+  width: 220px;
 }
 
 .items a:hover {
@@ -15,4 +15,17 @@
 .items img {
   height: 380px;
   width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .items {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .items {
+    width: 100%;
+    margin: 0;
+  }
 }

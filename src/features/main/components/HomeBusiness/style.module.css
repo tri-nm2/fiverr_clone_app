@@ -26,3 +26,15 @@
 .businessRight img {
   width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .businessLeft {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .businessRight {
+    width: 100%;
+  }
+}

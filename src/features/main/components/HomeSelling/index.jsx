@@ -4,10 +4,12 @@ import Style from "./style.module.css";
 function HomeSelling() {
   return (
     <div
-      className="flex items-center py-20 px-10 my-14"
+      className="flex items-center py-20 px-10 my-14 md:flex-row flex-col"
       style={{ backgroundColor: "#f1fdf7" }}
     >
-      <div className={`text-lg font-semibold w-1/2 ${Style.sellingLeft}`}>
+      <div
+        className={`text-lg font-semibold md:w-1/2 w-full md:mb-0 mb-10 ${Style.sellingLeft}`}
+      >
         <span className="text-3xl font-bold block mb-5">
           A whole world of freelance talent at your fingertips
         </span>
@@ -102,7 +104,7 @@ function HomeSelling() {
         </div>
       </div>
 
-      <div className={`w-1/2 relative ${Style.sellingRight}`}>
+      <div className={`md:w-1/2 w-full relative ${Style.sellingRight}`}>
         <img
           src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_700,dpr_1.0/v1/attachments/generic_asset/asset/089e3bb9352f90802ad07ad9f6a4a450-1599517407052/selling-proposition-still-1400-x1.png"
           alt="error"

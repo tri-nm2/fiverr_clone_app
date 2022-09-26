@@ -31,8 +31,10 @@ function Home() {
       <HomeHeader />
       <HomeCarousel />
 
-      <div className="flex justify-around items-center w-1/2 mx-auto text-base font-semibold py-6">
-        <span style={{ color: "#b5b6ba" }}>Trusted by:</span>
+      <div className="flex justify-around items-center md:w-1/2 w-3/4 mx-auto text-base font-semibold py-6">
+        <span className="md:block hidden" style={{ color: "#b5b6ba" }}>
+          Trusted by:
+        </span>
         <img
           src="https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/facebook.31d5f92.png"
           alt="error"
@@ -71,16 +73,19 @@ function Home() {
 
       <HomeGuide />
 
-      <div className="my-10 mx-10 relative">
-        <div className="absolute top-0 left-0 z-0">
+      <div
+        className="my-10 mx-10 relative"
+        style={{ backgroundColor: "#45091b" }}
+      >
+        <div className="absolute top-0 left-0 z-0 md:block hidden">
           <img
             className="rounded w-full h-full"
             src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_1400,dpr_1.0/v1/attachments/generic_asset/asset/50218c41d277f7d85feeaf3efb4549bd-1599072608122/bg-signup-1400-x1.png"
             alt="error"
           ></img>
         </div>
-        <div className="relative text-white z-10 w-3/5 py-24 pl-24">
-          <span className="text-5xl font-bold block mb-10">
+        <div className="relative text-white z-10 md:w-3/5 w-full py-24 md:pl-24 pl-12">
+          <span className="md:text-5xl text-4xl font-bold block mb-10">
             Find the <i className="font-semibold">talent</i> needed to get your
             business <i className="font-semibold">growing</i>.
           </span>

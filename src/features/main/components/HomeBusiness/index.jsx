@@ -4,7 +4,7 @@ import Style from "./style.module.css";
 function HomeBusiness() {
   return (
     <div
-      className="text-white text-lg font-semibold py-20 px-10 my-10 flex"
+      className="text-white text-lg font-semibold py-20 px-10 my-10 flex md:flex-row flex-col"
       style={{ backgroundColor: "#0d084d" }}
     >
       <div className={`${Style.businessLeft}`}>
@@ -44,7 +44,7 @@ function HomeBusiness() {
           dedicated to businesses
         </p>
 
-        <div className="mb-20">
+        <div className="md:mb-20 mb-10">
           <div className="flex items-start mb-5">
             <span className="mr-2">
               <svg

@@ -4,7 +4,7 @@ import Style from "./style.module.css";
 function HomeLogoMaker() {
   return (
     <div className={`my-10 mx-10 relative ${Style.logoMaker}`}>
-      <div className="pl-16 py-10 z-10 relative text-white text-base font-semibold w-1/2">
+      <div className="pl-16 py-10 z-10 relative text-white text-base font-semibold md:w-1/2 w-full">
         <p className="mb-5">
           <svg
             width={249}

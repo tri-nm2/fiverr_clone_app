@@ -5,17 +5,43 @@ import Style from "./style.module.css";
 
 function HomeServivesCarousel() {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     arrows: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className="px-5 py-10">
-      <p className="text-3xl font-semibold mb-10 ml-2">Popular professional services</p>
+      <p className="text-3xl font-semibold mb-10 ml-2">
+        Popular professional services
+      </p>
       <Carousel {...settings}>
         <div>
           <div className={`relative mx-2 ${Style.items}`}>
