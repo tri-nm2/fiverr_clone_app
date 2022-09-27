@@ -1,0 +1,12 @@
+.project {
+  background-color: #f5f5f5;
+}
+
+.project .projectHeader a {
+  color: #446ee7;
+}
+
+.project .projectImage {
+  height: 240px;
+  width: 100%;
+}

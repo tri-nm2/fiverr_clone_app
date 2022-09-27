@@ -1,0 +1,40 @@
+.businessLeft {
+  width: 45%;
+  padding-right: 5%;
+}
+
+.businessLeft .businessNew {
+  background-color: #584aff;
+  padding: 1px 10px;
+  border-radius: 10px;
+}
+
+.businessLeft .btnBusinessExplore {
+  padding: 12px 48px;
+  background-color: #1dbf73;
+  transition: all 70ms;
+}
+
+.businessLeft .btnBusinessExplore:hover {
+  background-color: #19a463;
+}
+
+.businessRight {
+  width: 65%;
+}
+
+.businessRight img {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .businessLeft {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .businessRight {
+    width: 100%;
+  }
+}

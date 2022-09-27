@@ -5,3 +5,13 @@
   background-position: center;
   height: 700px;
 }
+
+.btnStarted {
+  padding: 10px 30px;
+  background-color: #1dbf73;
+  transition: all 70ms;
+}
+
+.btnStarted:hover {
+  background-color: #19a463;
+}

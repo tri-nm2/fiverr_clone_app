@@ -1,0 +1,31 @@
+.items {
+  width: 220px;
+}
+
+.items a:hover {
+  color: #fff;
+}
+
+.items p {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.items img {
+  height: 380px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .items {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .items {
+    width: 100%;
+    margin: 0;
+  }
+}

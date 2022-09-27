@@ -138,9 +138,9 @@ function HomeHeader() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <header
-        className={`fixed w-full transition-all duration-500 ${headerStyle}
+        className={`fixed w-full transition-all duration-500 z-50 ${headerStyle}
         ${Style.mobileHeader}`}
       >
         <div
