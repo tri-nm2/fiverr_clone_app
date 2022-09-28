@@ -1,10 +1,11 @@
 import PageFooter from "common/components/PageFooter";
 import HomeHeader from "features/main/components/HomeHeader";
+import PageLoginHeader from "common/components/PageLoginHeader";
 import React, { useEffect } from "react";
 import Style from "./style.module.css";
 import { useWindowSize } from "common/hooks/windowSize";
 import PageMobileFooter from "common/components/PageMobileFooter";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchMenuDataAction } from "../../action";
 import HomeCarousel from "features/main/components/HomeCarousel";
 import HomeServivesCarousel from "features/main/components/HomeServicesCarousel";
@@ -19,16 +20,19 @@ import HomeGuide from "features/main/components/HomeGuide";
 function Home() {
   const windowSize = useWindowSize();
   const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.authen.userInfo);
 
+  //Hooks
   useEffect(() => {
     dispatch(fetchMenuDataAction());
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  //Hooks
 
   return (
     <div className="container mx-auto">
-      <HomeHeader />
+      {userInfo.id ? <PageLoginHeader /> : <HomeHeader />}
       <HomeCarousel />
 
       <div className="flex justify-around items-center md:w-1/2 w-3/4 mx-auto text-base font-semibold py-6">

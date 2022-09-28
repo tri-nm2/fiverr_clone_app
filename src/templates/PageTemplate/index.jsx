@@ -1,10 +1,13 @@
 import PageFooter from "common/components/PageFooter";
 import PageHeader from "common/components/PageHeader";
+import PageLoginHeader from "common/components/PageLoginHeader";
 import React from "react";
 import { Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function PageTemplate(props) {
   const { Component, ...rest } = props;
+  const userInfo = useSelector((state) => state.authen.userInfo);
 
   return (
     <Route
@@ -12,7 +15,7 @@ function PageTemplate(props) {
       render={(propsRoute) => {
         return (
           <div>
-            <PageHeader />
+            {userInfo.id ? <PageLoginHeader /> : <PageHeader />}
             <Component {...propsRoute} />
             <PageFooter />
           </div>
