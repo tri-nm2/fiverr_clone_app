@@ -5,8 +5,7 @@ import React, { useEffect } from "react";
 import Style from "./style.module.css";
 import { useWindowSize } from "common/hooks/windowSize";
 import PageMobileFooter from "common/components/PageMobileFooter";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMenuDataAction } from "../../action";
+import { useSelector } from "react-redux";
 import HomeCarousel from "features/main/components/HomeCarousel";
 import HomeServivesCarousel from "features/main/components/HomeServicesCarousel";
 import HomeTestimonialCarousel from "features/main/components/HomeTestimonialCarousel";
@@ -19,12 +18,10 @@ import HomeGuide from "features/main/components/HomeGuide";
 
 function Home() {
   const windowSize = useWindowSize();
-  const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.authen.userInfo);
 
   //Hooks
   useEffect(() => {
-    dispatch(fetchMenuDataAction());
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

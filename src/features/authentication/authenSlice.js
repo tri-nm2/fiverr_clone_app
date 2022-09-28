@@ -6,7 +6,11 @@ const authenSlice = createSlice({
   initialState: {
     userInfo: {},
   },
-  reducers: {},
+  reducers: {
+    clearUserInfo: (state) => {
+      state.userInfo = {};
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUserInfoAction.fulfilled, (state, action) => {
       state.userInfo = action.payload;

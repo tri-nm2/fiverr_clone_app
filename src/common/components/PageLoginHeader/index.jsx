@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Style from "./style.module.css";
 import { Dropdown, Menu, Drawer } from "antd";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import authenReducer from "features/authentication/authenSlice";
 
 function PageLoginHeader() {
   const [open, setOpen] = useState(false);
   const menuData = useSelector((state) => state.main.menuData);
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useSelector((state) => state.authen.userInfo);
+  const dispatch = useDispatch();
   const categoriesItems = menuData.map((categories) => {
     let childList = [];
     categories.dsNhomChiTietLoai.forEach((group) => {
@@ -136,7 +138,15 @@ function PageLoginHeader() {
     },
     {
       key: "item15",
-      label: <button>Logout</button>,
+      label: (
+        <button
+          onClick={() => {
+            handleLogout();
+          }}
+        >
+          Logout
+        </button>
+      ),
     },
     {
       key: "item17",
@@ -148,6 +158,13 @@ function PageLoginHeader() {
     },
   ];
 
+  //Events
+  const handleLogout = () => {
+    dispatch(authenReducer.actions.clearUserInfo());
+  };
+  //Events
+
+  //Other functions
   const renderMenu = () => {
     const tag = menuData.map((categories, index) => {
       const itemsList = categories.dsNhomChiTietLoai.map((group, index) => {
@@ -177,6 +194,7 @@ function PageLoginHeader() {
 
     return tag;
   };
+  //Other functions
 
   return (
     <div className="container mx-auto">
@@ -321,7 +339,13 @@ function PageLoginHeader() {
                     <Link to="/">$ USD</Link>
                     <Link to="/">Help &amp; support</Link>
                   </div>
-                  <button to="/">Logout</button>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                    }}
+                  >
+                    Logout
+                  </button>
                 </div>
               </div>
             </div>
