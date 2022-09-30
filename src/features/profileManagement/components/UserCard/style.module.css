@@ -1,0 +1,58 @@
+.sellerCard {
+  background-color: #fff;
+  border: 1px solid #dadbdd;
+  padding: 30px;
+  color: #62646a;
+}
+
+.sellerCard .onlineText {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+}
+
+.sellerCard .onlineText span {
+  border: 1px solid #1dbf73;
+  border-radius: 12px;
+  color: #1dbf73;
+  padding: 2px 15px;
+}
+
+.sellerCard .userAvarta .avartaOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.sellerCard .userAvarta:hover .avartaOverlay {
+  opacity: 1;
+}
+
+.sellerCard .previewProfile {
+  width: 100%;
+  padding: 5px 0px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #62646a;
+  border-radius: 4px;
+  text-align: center;
+  transition: all 70ms;
+}
+
+.sellerCard .previewProfile:hover {
+  background-color: #62646a;
+  color: #fff;
+}
+
+.sellerCard .userStat {
+  border-top: 1px solid #dadbdd;
+}

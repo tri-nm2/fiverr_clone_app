@@ -302,7 +302,7 @@ function PageLoginHeader() {
                 <div className={Style.triangle}></div>
                 <div className={`text-base font-normal  ${Style.userMenu}`}>
                   <div className="flex flex-col justify-around items-start space-y-2 pb-3 border-b">
-                    <Link to="/">Profile</Link>
+                    <Link to="/profile">Profile</Link>
                     <Link to="/">Manage Requests</Link>
                     <Link to="/">Post a Request</Link>
                     <Link to="/" style={{ color: "#1dbf73" }}>

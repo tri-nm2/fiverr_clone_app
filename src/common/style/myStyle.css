@@ -50,3 +50,10 @@
 .testimonial .ant-carousel .slick-next {
   right: 15px;
 }
+
+.userAvarta .ant-upload.ant-upload-select-picture-card {
+  border-color: transparent;
+  border-radius: 9999px;
+  width: 150px;
+  height: 150px;
+}
