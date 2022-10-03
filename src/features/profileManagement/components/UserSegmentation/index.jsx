@@ -1,10 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
-import { EditOutlined, PlusOutlined } from "@ant-design/icons";
+import { EditOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import Style from "./style.module.css";
 import { Input } from "antd";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import instace from "api/instance";
+import { fetchUserInfoAction } from "features/authentication/action";
 
 function UserSegmentation() {
+  const userInfo = useSelector((state) => state.authen.userInfo);
+  const userId = localStorage.getItem("id");
   const [userLanguages, setUserLanguages] = useState(["English", "Vietnamese"]);
   const [openLanguages, setOpenLanguages] = useState(false);
   const [openSkills, setOpenSkills] = useState(false);
@@ -14,10 +19,29 @@ function UserSegmentation() {
   const txtSkill = useRef(null);
   const txtEducation = useRef(null);
   const txtCertification = useRef(null);
+  const dispatch = useDispatch();
 
   //Hooks
   useEffect(() => {});
   //Hooks
+
+  //Api functions
+  const updateUserInfo = async (newUserInfo) => {
+    try {
+      const response = await instace.request({
+        url: `/api/users/${userId}`,
+        method: "PUT",
+        data: newUserInfo,
+      });
+
+      if (response.status === 200) {
+        dispatch(fetchUserInfoAction(userId));
+      }
+    } catch (error) {
+      console.log(error.response.data.content);
+    }
+  };
+  //Api functions
 
   const handleAddLanguages = () => {
     const languages = userLanguages;
@@ -26,19 +50,94 @@ function UserSegmentation() {
     setUserLanguages([...languages]);
   };
 
-  const handleAddSkills = () => {};
+  const handleAddSkills = () => {
+    const newSkill = txtSkill.current.input.value;
+    const newSkillList = [...userInfo.skill];
+    newSkillList.push(newSkill);
+    const newUserInfo = { ...userInfo, skill: newSkillList };
+    updateUserInfo(newUserInfo);
+  };
+
+  const handleDeleteSkill = (skill) => {
+    const newSkillList = [...userInfo.skill];
+    const deleteIndex = newSkillList.findIndex((item) => item === skill);
+    newSkillList.splice(deleteIndex, 1);
+    const newUserInfo = { ...userInfo, skill: newSkillList };
+    updateUserInfo(newUserInfo);
+  };
+
   const handleAddEducation = () => {};
-  const handleAddCertification = () => {};
+
+  const handleAddCertification = () => {
+    const newCertification = txtCertification.current.input.value;
+    const newCertificationList = [...userInfo.certification];
+    newCertificationList.push(newCertification);
+    const newUserInfo = { ...userInfo, certification: newCertificationList };
+    updateUserInfo(newUserInfo);
+  };
+
+  const handleDeleteCertification = (certification) => {
+    const newCertificationList = [...userInfo.certification];
+    const deleteIndex = newCertificationList.findIndex(
+      (item) => item === certification
+    );
+    newCertificationList.splice(deleteIndex, 1);
+    const newUserInfo = { ...userInfo, certification: newCertificationList };
+    updateUserInfo(newUserInfo);
+  };
   //Evetns
 
   //Other Functions
   const renderLanguages = () => {
     const tag = userLanguages.map((language, index) => {
-      console.log(language);
       return (
         <div key={index} className={`flex items-center ${Style.row}`}>
           <span className="mr-2">{language} - Basic</span>
           <EditOutlined className={Style.icon} />
+        </div>
+      );
+    });
+
+    return tag;
+  };
+
+  const renderSkills = () => {
+    const tag = userInfo?.skill.map((skill, index) => {
+      return (
+        <div key={index} className={`flex items-center ${Style.row}`}>
+          <span className="mr-2">{skill}</span>
+          <button
+            onClick={() => {
+              handleDeleteSkill(skill);
+            }}
+          >
+            <DeleteOutlined
+              style={{ verticalAlign: "middle" }}
+              className={Style.icon}
+            />
+          </button>
+        </div>
+      );
+    });
+
+    return tag;
+  };
+
+  const renderCertifications = () => {
+    const tag = userInfo?.certification.map((certifitation, index) => {
+      return (
+        <div key={index} className={`flex items-center ${Style.row}`}>
+          <span className="mr-2">{certifitation}</span>
+          <button
+            onClick={() => {
+              handleDeleteCertification(certifitation);
+            }}
+          >
+            <DeleteOutlined
+              style={{ verticalAlign: "middle" }}
+              className={Style.icon}
+            />
+          </button>
         </div>
       );
     });
@@ -177,6 +276,7 @@ function UserSegmentation() {
             </button>
           </div>
         </div>
+        <div className="flex flex-col space-y-2">{renderSkills()}</div>
       </div>
 
       <div className={`w-full py-8 ${Style.userEducation}`}>
@@ -263,6 +363,7 @@ function UserSegmentation() {
             </button>
           </div>
         </div>
+        <div className="flex flex-col space-y-2">{renderCertifications()}</div>
       </div>
     </div>
   );

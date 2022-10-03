@@ -51,12 +51,16 @@
   border-bottom: 1px solid #dadbdd;
 }
 
-.userSegmentation .userLanguages .row .icon {
+.userSegmentation .userLanguages .row .icon,
+.userSegmentation .userSkills .row .icon,
+.userSegmentation .userCertification .row .icon {
   opacity: 0;
   transition: all 0.3s;
 }
 
-.userSegmentation .userLanguages .row:hover .icon {
+.userSegmentation .userLanguages .row:hover .icon,
+.userSegmentation .userSkills .row:hover .icon,
+.userSegmentation .userCertification .row:hover .icon {
   opacity: 1;
 }
 

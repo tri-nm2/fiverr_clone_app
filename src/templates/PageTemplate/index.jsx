@@ -15,7 +15,7 @@ function PageTemplate(props) {
       render={(propsRoute) => {
         return (
           <div>
-            {userInfo.id ? <PageLoginHeader /> : <PageHeader />}
+            {userInfo?.id ? <PageLoginHeader /> : <PageHeader />}
             <Component {...propsRoute} />
             <PageFooter />
           </div>

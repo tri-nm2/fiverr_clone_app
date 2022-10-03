@@ -9,8 +9,6 @@ export const fetchUserInfoAction = createAsyncThunk(
         url: `/api/users/${userId}`,
       });
 
-      console.log(response.data.content);
-
       return response.data.content;
     } catch (error) {
       console.log(error.response.data.content);

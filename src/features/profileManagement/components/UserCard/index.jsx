@@ -1,17 +1,22 @@
 import React, { useState } from "react";
-import { Upload } from "antd";
+import { Upload, Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Style from "./style.module.css";
+import instace from "api/instance";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserInfoAction } from "features/authentication/action";
 
 function UserCard() {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
-  
-  const userAvarta = (
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.authen.userInfo);
+
+  const userAvatar = (
     <div className="w-full h-full">
       <img
         className="w-full h-full rounded-full"
-        src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
+        src={userInfo?.avatar}
         alt="avatar"
       />
     </div>
@@ -30,8 +35,28 @@ function UserCard() {
   );
 
   //Events
-  const handleChange = (info) => {
-    console.log(info.file);
+  const handleChange = async (info) => {
+    const avatar = new FormData();
+    avatar.append("formFile", info.file, info.file.name);
+    const userId = localStorage.getItem("id");
+
+    try {
+      setLoading(true);
+
+      const response = await instace.request({
+        url: "/api/users/upload-avatar",
+        method: "POST",
+        data: avatar,
+      });
+
+      if (response.status === 200) {
+        dispatch(fetchUserInfoAction(userId));
+      }
+    } catch (error) {
+      console.log(error.response);
+    } finally {
+      setLoading(false);
+    }
   };
   //Events
 
@@ -45,14 +70,14 @@ function UserCard() {
       <Upload
         name="avatar"
         listType="picture-card"
-        className="userAvarta flex justify-center mb-2"
+        className="userAvatar flex justify-center mb-2"
         showUploadList={false}
         beforeUpload={() => false}
         onChange={handleChange}
       >
-        <div className={`w-full h-full relative ${Style.userAvarta}`}>
-          {imageUrl ? userAvarta : uploadButton}
-          <div className={Style.avartaOverlay}>
+        <div className={`w-full h-full relative ${Style.userAvatar}`}>
+          {userInfo?.avatar ? userAvatar : uploadButton}
+          <div className={Style.avatarOverlay}>
             <svg
               width={50}
               height={50}
@@ -68,9 +93,24 @@ function UserCard() {
               />
             </svg>
           </div>
+          <div
+            className={`${loading ? "flex" : "hidden"} ${Style.loadingOverlay}`}
+          >
+            <Spin
+              indicator={
+                <LoadingOutlined
+                  style={{
+                    fontSize: 60,
+                    color: "#fff",
+                  }}
+                  spin
+                />
+              }
+            />
+          </div>
         </div>
       </Upload>
-      <h1 className="text-xl font-bold mb-3">tri_nm2</h1>
+      <h1 className="text-xl font-bold mb-3">{userInfo?.name}</h1>
       <button className="mb-3">
         <svg
           width={16}

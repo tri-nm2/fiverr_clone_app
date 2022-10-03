@@ -29,7 +29,7 @@ function Home() {
 
   return (
     <div className="container mx-auto">
-      {userInfo.id ? <PageLoginHeader /> : <HomeHeader />}
+      {userInfo?.id ? <PageLoginHeader /> : <HomeHeader />}
       <HomeCarousel />
 
       <div className="flex justify-around items-center md:w-1/2 w-3/4 mx-auto text-base font-semibold py-6">
