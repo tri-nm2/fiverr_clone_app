@@ -5,3 +5,26 @@
 .userProfile .columnLeft {
   width: 400px;
 }
+
+.userProfile .rightHeader {
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 20px 25px;
+  margin-bottom: 40px;
+}
+
+.userProfile .rightHeader span::after {
+  content: "";
+  height: 3px;
+  position: absolute;
+  z-index: 1;
+  bottom: -100%;
+  left: 0;
+  background-color: #1dbf73;
+  width: 100%;
+  transform: translateY(100%);
+  
+}

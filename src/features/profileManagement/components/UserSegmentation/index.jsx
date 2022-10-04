@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { EditOutlined, PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import Style from "./style.module.css";
-import { Input } from "antd";
+import { Input, Select } from "antd";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import instace from "api/instance";
@@ -10,7 +10,22 @@ import { fetchUserInfoAction } from "features/authentication/action";
 function UserSegmentation() {
   const userInfo = useSelector((state) => state.authen.userInfo);
   const userId = localStorage.getItem("id");
-  const [userLanguages, setUserLanguages] = useState(["English", "Vietnamese"]);
+  const [userLanguages, setUserLanguages] = useState([
+    {
+      name: "English",
+      level: "Basic",
+    },
+    {
+      name: "Vietnamese",
+      level: "Native",
+    },
+  ]);
+  const [userEducation, setUserEducation] = useState([
+    {
+      universityName: "HCMUS",
+      yearGraduation: "2016",
+    },
+  ]);
   const [openLanguages, setOpenLanguages] = useState(false);
   const [openSkills, setOpenSkills] = useState(false);
   const [openEducations, setOpenEducations] = useState(false);
@@ -19,6 +34,8 @@ function UserSegmentation() {
   const txtSkill = useRef(null);
   const txtEducation = useRef(null);
   const txtCertification = useRef(null);
+  const languageLevel = useRef(null);
+  const yearGraduation = useRef(null);
   const dispatch = useDispatch();
 
   //Hooks
@@ -43,11 +60,24 @@ function UserSegmentation() {
   };
   //Api functions
 
+  //Events
   const handleAddLanguages = () => {
     const languages = userLanguages;
-    const newLanguages = txtLanguage.current.input.value;
+    const newLanguages = {
+      name: txtLanguage.current.input.value,
+      level: languageLevel.current,
+    };
     languages.push(newLanguages);
     setUserLanguages([...languages]);
+  };
+
+  const handleDeleteLanguages = (name) => {
+    const deleteIndex = userLanguages.findIndex(
+      (language) => language.name === name
+    );
+    const newUserLanguages = [...userLanguages];
+    newUserLanguages.splice(deleteIndex, 1);
+    setUserLanguages(newUserLanguages);
   };
 
   const handleAddSkills = () => {
@@ -66,7 +96,24 @@ function UserSegmentation() {
     updateUserInfo(newUserInfo);
   };
 
-  const handleAddEducation = () => {};
+  const handleAddEducation = () => {
+    const education = [...userEducation];
+    const newEducation = {
+      universityName: txtEducation.current.input.value,
+      yearGraduation: yearGraduation.current.toString(),
+    };
+    education.push(newEducation);
+    setUserEducation(education);
+  };
+
+  const handleDeleteEducation = (name) => {
+    const deleteIndex = userEducation.findIndex(
+      (education) => education.universityName === name
+    );
+    const newEducation = [...userEducation];
+    newEducation.splice(deleteIndex, 1);
+    setUserEducation(newEducation);
+  };
 
   const handleAddCertification = () => {
     const newCertification = txtCertification.current.input.value;
@@ -85,6 +132,14 @@ function UserSegmentation() {
     const newUserInfo = { ...userInfo, certification: newCertificationList };
     updateUserInfo(newUserInfo);
   };
+
+  const handleChangeLanguageLevel = (value) => {
+    languageLevel.current = value;
+  };
+
+  const handleChangeYearGraduation = (value) => {
+    yearGraduation.current = value;
+  };
   //Evetns
 
   //Other Functions
@@ -92,8 +147,19 @@ function UserSegmentation() {
     const tag = userLanguages.map((language, index) => {
       return (
         <div key={index} className={`flex items-center ${Style.row}`}>
-          <span className="mr-2">{language} - Basic</span>
-          <EditOutlined className={Style.icon} />
+          <span className="mr-2">
+            {language.name} - {language.level}
+          </span>
+          <button
+            onClick={() => {
+              handleDeleteLanguages(language.name);
+            }}
+          >
+            <DeleteOutlined
+              style={{ verticalAlign: "middle" }}
+              className={Style.icon}
+            />
+          </button>
         </div>
       );
     });
@@ -144,6 +210,42 @@ function UserSegmentation() {
 
     return tag;
   };
+
+  const renderEducation = () => {
+    const tag = userEducation.map((education, index) => {
+      return (
+        <div key={index} className={`flex items-center ${Style.row}`}>
+          <span className="mr-2">
+            {education.universityName} - {education.yearGraduation}
+          </span>
+          <button
+            onClick={() => {
+              handleDeleteEducation(education.universityName);
+            }}
+          >
+            <DeleteOutlined
+              style={{ verticalAlign: "middle" }}
+              className={Style.icon}
+            />
+          </button>
+        </div>
+      );
+    });
+
+    return tag;
+  };
+
+  const renderYearGraduation = () => {
+    const tag = [];
+    for (let i = 2016; i <= 2022; i++) {
+      tag.push(
+        <Select.Option key={i} value={i}>
+          {i}
+        </Select.Option>
+      );
+    }
+    return tag;
+  };
   //Other Functions
 
   return (
@@ -180,6 +282,16 @@ function UserSegmentation() {
             placeholder="Add Language"
             ref={txtLanguage}
           />
+          <Select
+            className="w-full mb-3"
+            placeholder="Language Level"
+            onChange={handleChangeLanguageLevel}
+          >
+            <Select.Option value="Basic">Basic</Select.Option>
+            <Select.Option value="Conversational">Conversational</Select.Option>
+            <Select.Option value="Fluent">Fluent</Select.Option>
+            <Select.Option value="Native">Native/Bilingual</Select.Option>
+          </Select>
           <div className="flex justify-between items-center">
             <button
               className={Style.btnCancel}
@@ -298,7 +410,18 @@ function UserSegmentation() {
             Style.form
           }`}
         >
-          <Input className="mb-3" placeholder="Add Skill" ref={txtEducation} />
+          <Input
+            className="mb-3"
+            placeholder="University Name"
+            ref={txtEducation}
+          />
+          <Select
+            className="w-full mb-3"
+            placeholder="Year Graduation"
+            onChange={handleChangeYearGraduation}
+          >
+            {renderYearGraduation()}
+          </Select>
           <div className="flex justify-between items-center">
             <button
               className={Style.btnCancel}
@@ -318,6 +441,7 @@ function UserSegmentation() {
             </button>
           </div>
         </div>
+        <div className="flex flex-col space-y-2">{renderEducation()}</div>
       </div>
 
       <div className={`w-full py-8 ${Style.userCertification}`}>

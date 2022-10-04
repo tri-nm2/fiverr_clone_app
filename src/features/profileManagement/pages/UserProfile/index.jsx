@@ -12,7 +12,11 @@ function UserProfile() {
         <Learn />
         <UserSegmentation />
       </div>
-      <div className="w-3/5">Right</div>
+      <div className="w-3/5">
+        <div className={Style.rightHeader}>
+          <span className="relative text-base font-semibold">ACTIVE GIGS</span>
+        </div>
+      </div>
     </div>
   );
 }

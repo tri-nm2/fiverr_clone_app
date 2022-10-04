@@ -53,14 +53,16 @@
 
 .userSegmentation .userLanguages .row .icon,
 .userSegmentation .userSkills .row .icon,
-.userSegmentation .userCertification .row .icon {
+.userSegmentation .userCertification .row .icon,
+.userSegmentation .userEducation .row .icon {
   opacity: 0;
   transition: all 0.3s;
 }
 
 .userSegmentation .userLanguages .row:hover .icon,
 .userSegmentation .userSkills .row:hover .icon,
-.userSegmentation .userCertification .row:hover .icon {
+.userSegmentation .userCertification .row:hover .icon,
+.userSegmentation .userEducation .row:hover .icon {
   opacity: 1;
 }
 
