@@ -1,0 +1,20 @@
+.learnCard {
+  background-color: #fff;
+  border: 1px solid #dadbdd;
+  padding: 30px;
+  color: #62646a;
+}
+
+.learnCard .btnEnroll {
+  background-color: #1dbf73;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 70ms;
+}
+
+.learnCard .btnEnroll:hover {
+  background-color: #19a463;
+}

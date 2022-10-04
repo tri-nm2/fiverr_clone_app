@@ -1,0 +1,72 @@
+.userSegmentation {
+  background-color: #fff;
+  border: 1px solid #dadbdd;
+  padding: 30px;
+  color: #62646a;
+}
+
+.userSegmentation .form {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+}
+
+.userSegmentation .btn,
+.userSegmentation .btnCancel {
+  height: 30px;
+  width: 140px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.userSegmentation .btnCancel {
+  border-color: #ccc;
+  color: #777;
+  background-color: #fff;
+}
+
+.userSegmentation .btn {
+  border-color: #1dbf73;
+  color: #fff;
+  background-color: #1dbf73;
+}
+
+.userSegmentation .btnAddNew {
+  color: #00698c;
+}
+
+.userSegmentation .btnAddNew:hover {
+  text-decoration: underline;
+}
+
+.userSegmentation .userDescription,
+.userSegmentation .userLanguages,
+.userSegmentation .userSocialNetwork,
+.userSegmentation .userSkills,
+.userSegmentation .userEducation {
+  border-bottom: 1px solid #dadbdd;
+}
+
+.userSegmentation .userLanguages .row .icon,
+.userSegmentation .userSkills .row .icon,
+.userSegmentation .userCertification .row .icon,
+.userSegmentation .userEducation .row .icon {
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.userSegmentation .userLanguages .row:hover .icon,
+.userSegmentation .userSkills .row:hover .icon,
+.userSegmentation .userCertification .row:hover .icon,
+.userSegmentation .userEducation .row:hover .icon {
+  opacity: 1;
+}
+
+.userSegmentation .socialNetworkLink a,
+.userSegmentation .socialNetworkLink a:hover {
+  color: #00698c;
+}

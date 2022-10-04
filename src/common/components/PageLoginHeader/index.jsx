@@ -293,16 +293,24 @@ function PageLoginHeader() {
             </NavLink>
             <div className="relative">
               <button
-                className="w-10 h-10 rounded-full bg-black"
+                className="w-10 h-10 rounded-full"
                 onClick={() => {
                   setOpenMenu(!openMenu);
                 }}
-              ></button>
+              >
+                {userInfo?.avatar && (
+                  <img
+                    className="w-full h-full rounded-full"
+                    src={userInfo.avatar}
+                    alt="error"
+                  ></img>
+                )}
+              </button>
               <div className={`${openMenu ? "block" : "hidden"}`}>
                 <div className={Style.triangle}></div>
                 <div className={`text-base font-normal  ${Style.userMenu}`}>
                   <div className="flex flex-col justify-around items-start space-y-2 pb-3 border-b">
-                    <Link to="/">Profile</Link>
+                    <Link to="/profile">Profile</Link>
                     <Link to="/">Manage Requests</Link>
                     <Link to="/">Post a Request</Link>
                     <Link to="/" style={{ color: "#1dbf73" }}>
@@ -367,7 +375,7 @@ function PageLoginHeader() {
         title={
           <div className="flex items-center">
             <button className="w-14 h-14 bg-black rounded-full mr-5"></button>
-            <span>{userInfo.name}</span>
+            <span>{userInfo?.name}</span>
           </div>
         }
         placement="left"

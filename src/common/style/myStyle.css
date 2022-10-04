@@ -50,3 +50,18 @@
 .testimonial .ant-carousel .slick-next {
   right: 15px;
 }
+
+.userAvatar .ant-upload.ant-upload-select-picture-card {
+  border-color: transparent;
+  border-radius: 9999px;
+  width: 150px;
+  height: 150px;
+}
+
+.ant-switch {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.ant-switch-checked {
+  background-color: #1890ff !important;
+}
