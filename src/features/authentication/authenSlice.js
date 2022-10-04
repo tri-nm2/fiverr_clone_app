@@ -4,11 +4,11 @@ import { fetchUserInfoAction } from "./action";
 const authenSlice = createSlice({
   name: "authentication",
   initialState: {
-    userInfo: {},
+    userInfo: null,
   },
   reducers: {
     clearUserInfo: (state) => {
-      state.userInfo = {};
+      state.userInfo = null;
     },
   },
   extraReducers: (builder) => {

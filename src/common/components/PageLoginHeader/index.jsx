@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Style from "./style.module.css";
 import { Dropdown, Menu, Drawer } from "antd";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authenReducer from "features/authentication/authenSlice";
 
@@ -11,6 +11,8 @@ function PageLoginHeader() {
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useSelector((state) => state.authen.userInfo);
   const dispatch = useDispatch();
+  const location = useLocation();
+  const history = useHistory();
   const categoriesItems = menuData.map((categories) => {
     let childList = [];
     categories.dsNhomChiTietLoai.forEach((group) => {
@@ -161,6 +163,9 @@ function PageLoginHeader() {
   //Events
   const handleLogout = () => {
     dispatch(authenReducer.actions.clearUserInfo());
+    if (location.pathname === "/profile") {
+      history.push("/");
+    }
   };
   //Events
 
@@ -374,7 +379,15 @@ function PageLoginHeader() {
       <Drawer
         title={
           <div className="flex items-center">
-            <button className="w-14 h-14 bg-black rounded-full mr-5"></button>
+            <button className="w-14 h-14 rounded-full mr-5">
+              {userInfo?.avatar && (
+                <img
+                  className="w-full h-full rounded-full"
+                  src={userInfo.avatar}
+                  alt="error"
+                ></img>
+              )}
+            </button>
             <span>{userInfo?.name}</span>
           </div>
         }
