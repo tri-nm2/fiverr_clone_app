@@ -1,0 +1,26 @@
+.header {
+  background-image: url("https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/3f1b7ea10295936b6846bcff0afd38cf-1626595415203/graphics-design-desktop.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 12px;
+}
+
+.header .btnPlay {
+  padding: 10px 16px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+}
+
+.header .btnPlay svg {
+  vertical-align: middle;
+}
+
+.header .btnPlay:hover {
+  background-color: #fff;
+  color: rgb(11, 58, 36);
+}
+
+.header .btnPlay:hover svg {
+  fill: rgb(11, 58, 36);
+}

@@ -129,7 +129,9 @@ function HomeHeader() {
 
       return (
         <Dropdown key={index} overlay={menu}>
-          <Link to="/">{categories.tenLoaiCongViec}</Link>
+          <Link to={`/jobtype/${categories.id}`}>
+            {categories.tenLoaiCongViec}
+          </Link>
         </Dropdown>
       );
     });
