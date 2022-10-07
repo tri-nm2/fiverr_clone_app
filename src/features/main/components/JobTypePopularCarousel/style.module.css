@@ -1,0 +1,23 @@
+.item {
+  color: #404145;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #efeff0;
+  border-radius: 12px;
+  min-width: fit-content;
+  margin-bottom: 10px;
+}
+
+.item svg {
+  fill: #404145;
+}
+
+.item:hover a {
+  transition: all 0.2s;
+  color: #1dbf73;
+}
+
+.item:hover svg {
+  transition: all 0.2s;
+  fill: #1dbf73;
+}

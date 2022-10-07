@@ -65,3 +65,33 @@
 .ant-switch-checked {
   background-color: #1890ff !important;
 }
+
+.popular .ant-carousel .slick-prev,
+.popular .ant-carousel .slick-prev:hover,
+.popular .ant-carousel .slick-next,
+.popular .ant-carousel .slick-next:hover {
+  width: 35px;
+  height: 35px;
+}
+
+.popular .ant-carousel .slick-prev {
+  top: -40px;
+  left: 92%;
+}
+
+.popular .ant-carousel .slick-next {
+  top: -40px;
+  right: 15px;
+}
+
+@media screen and (max-width: 992px) {
+  .popular .ant-carousel .slick-prev {
+    left: 85%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popular .ant-carousel .slick-prev {
+    left: 82%;
+  }
+}
