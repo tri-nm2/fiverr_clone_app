@@ -5,6 +5,7 @@
   border: 1px solid #efeff0;
   border-radius: 12px;
   min-width: fit-content;
+  margin-bottom: 10px;
 }
 
 .item svg {

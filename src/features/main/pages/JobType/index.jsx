@@ -3,10 +3,37 @@ import JobTypeGroupList from "features/main/components/JobTypeGroupList";
 import JobTypeGuide from "features/main/components/JobTypeGuide";
 import JobTypePopularCarousel from "features/main/components/JobTypePopularCarousel";
 import JobTypeServices from "features/main/components/JobTypeServices";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
+import instace from "api/instance";
+import { useParams } from "react-router-dom";
 
 function JobType() {
+  const [groupList, setGroupList] = useState();
+  const { id } = useParams();
+
+  //Hooks
+  useEffect(() => {
+    fetchJobTypeGroupList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+  //Hooks
+
+  //Api functions
+  const fetchJobTypeGroupList = async () => {
+    try {
+      const response = await instace.request({
+        url: `/api/cong-viec/lay-chi-tiet-loai-cong-viec/${id}`,
+        method: "GET",
+      });
+
+      setGroupList(response.data.content);
+    } catch (error) {
+      console.log(error.response.data.content);
+    }
+  };
+  //Api functions
+
   return (
     <div className={`container mx-auto`}>
       <div>
@@ -37,7 +64,7 @@ function JobType() {
         </div>
 
         <JobTypePopularCarousel />
-        <JobTypeGroupList />
+        <JobTypeGroupList groupList={groupList} />
         <JobTypeGuide />
         <JobTypeFAQ />
         <JobTypeServices />

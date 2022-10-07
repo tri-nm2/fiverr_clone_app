@@ -83,3 +83,15 @@
   top: -40px;
   right: 15px;
 }
+
+@media screen and (max-width: 992px) {
+  .popular .ant-carousel .slick-prev {
+    left: 85%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .popular .ant-carousel .slick-prev {
+    left: 82%;
+  }
+}

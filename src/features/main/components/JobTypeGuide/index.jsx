@@ -9,7 +9,7 @@ function JobTypeGuide() {
         <p className="text-3xl font-semibold mb-10 ml-2">
           Graphics &amp; Design Related Guides
         </p>
-        <Link className="flex items-center text-base mr-3" to="/">
+        <Link className="lg:flex hidden items-center text-base mr-3" to="/">
           See More Guides
           <span className="ml-3 w-2.5 h-2.5">
             <svg
@@ -25,8 +25,8 @@ function JobTypeGuide() {
         </Link>
       </div>
 
-      <div className="flex justify-around items-start">
-        <div className="w-1/3 px-3">
+      <div className="flex flex-wrap justify-around items-start">
+        <div className="lg:w-1/3 sm:w-1/2 w-full mb-5 px-3">
           <img
             className="w-full h-full rounded mb-3"
             src="https://fiverr-res.cloudinary.com/image/upload/w_600/q_auto,f_auto/v1/attachments/generic_asset/asset/2508960106117021baf4c9699b982213-1593436732817/children%27s%20book%20illustration.jpg"
@@ -40,7 +40,7 @@ function JobTypeGuide() {
           </Link>
         </div>
 
-        <div className="w-1/3 px-3">
+        <div className="lg:w-1/3 sm:w-1/2 w-full mb-5 px-3">
           <img
             className="w-full h-full rounded mb-3"
             src="https://fiverr-res.cloudinary.com/image/upload/w_600/f_auto,q_auto/v1/attachments/generic_asset/asset/91c293673ad8b206e7125792c0e422b3-1612436784458/graphic%20design-min.jpg"
@@ -54,7 +54,7 @@ function JobTypeGuide() {
           </Link>
         </div>
 
-        <div className="w-1/3 px-3">
+        <div className="lg:w-1/3 sm:w-1/2 w-full mb-5 px-3">
           <img
             className="w-full h-full rounded mb-3"
             src="https://fiverr-res.cloudinary.com/image/upload/w_600/q_auto,f_auto/v1/attachments/generic_asset/asset/10f680cb84a2f3ef4473ecfdede3a1ba-1593438129320/business%20logo%20design-fiverr%20guide.jpg"
