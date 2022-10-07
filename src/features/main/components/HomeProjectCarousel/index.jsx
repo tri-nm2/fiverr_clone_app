@@ -47,7 +47,7 @@ function HomeProjectCarousel() {
           Get inspired with projects made by our freelancers
         </p>
         <Link
-          className="flex items-center text-base mr-3 lg:block hidden"
+          className="lg:flex items-center text-base mr-3 hidden"
           to="/"
         >
           See More Projects

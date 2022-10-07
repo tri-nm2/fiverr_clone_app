@@ -83,4 +83,8 @@
   .header .headerBorder {
     border-bottom: 1px solid transparent;
   }
+
+  .header .txtSearch {
+    width: 100%;
+  }
 }
