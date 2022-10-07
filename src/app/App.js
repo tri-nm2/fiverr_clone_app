@@ -20,6 +20,7 @@ function App() {
   const UserProfile = React.lazy(() =>
     import("features/profileManagement/pages/UserProfile")
   );
+  const JobType = React.lazy(() => import("features/main/pages/JobType"));
 
   //Hooks
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home}></Route>
             <PageTemplate path="/profile" Component={UserProfile} />
+            <PageTemplate path="/jobtype/:id" Component={JobType} />
           </Switch>
         </Suspense>
       </div>
