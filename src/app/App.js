@@ -12,6 +12,7 @@ import { fetchUserInfoAction } from "features/authentication/action";
 import { fetchMenuDataAction } from "features/main/action";
 import { useDispatch } from "react-redux";
 
+
 function App() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ function App() {
     import("features/profileManagement/pages/UserProfile")
   );
   const JobType = React.lazy(() => import("features/main/pages/JobType"));
-
+  const Categories = React.lazy(() => import("features/main/pages/Categories"));
+  const Detail = React.lazy(() => import("features/main/pages/Detail"));
   //Hooks
   useEffect(() => {
     dispatch(fetchUserInfoAction(9));
@@ -38,6 +40,8 @@ function App() {
             <Route path="/" exact component={Home}></Route>
             <PageTemplate path="/profile" Component={UserProfile} />
             <PageTemplate path="/jobtype/:id" Component={JobType} />
+            <PageTemplate path="/categories/:tenLoaiCongViec/:tenChitiet" Component={Categories} />
+            <PageTemplate path="/detail/:tenLoaiCongViec/:tenChitiet/:id" Component={Detail} />
           </Switch>
         </Suspense>
       </div>

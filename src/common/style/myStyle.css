@@ -83,7 +83,188 @@
   top: -40px;
   right: 15px;
 }
+/*======================= START CSS CUSTOM REACT-SLIDER FEATURE DETAIL=======================*/
+.gig-gallery-component .image-gallery-svg {
+  height: 30px;
+  width: 30px;
+}
+.image-gallery-slide img {
+  width: 100%;
+  height: 427px;
+}
+.gig-gallery-component .image-gallery-right-nav {
+  right: -24px;
+  border-radius: 50%;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+  filter: none;
+}
+.gig-gallery-component .image-gallery-left-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: -24px;
+  border-radius: 50%;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+  filter: none;
+}
+.gig-gallery-component .image-gallery-left-nav.image-gallery-icon svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+  display: none;
+}
+.gig-gallery-component
+  .image-gallery-content.fullscreen
+  .image-gallery-left-nav {
+  left: 30px;
+}
+.gig-gallery-component
+  .image-gallery-content.fullscreen
+  .image-gallery-right-nav {
+  right: 30px;
+}
+.gig-gallery-component .image-gallery-right-nav.image-gallery-icon::after{
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid black;
+  content: "";
+}
+.gig-gallery-component .image-gallery-left-nav.image-gallery-icon::after{
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid black;
+  content: "";
+}
+.gig-gallery-component .image-gallery-right-nav.image-gallery-icon svg {
+  width: 30px;
+  height: 30px;
+  color: black;
+  display: none;
+}
+.gig-gallery-component .image-gallery-slides {
+  background: hsla(0, 0%, 93%, 0.9);
+}
 
+.gig-gallery-component .image-gallery-fullscreen-button {
+  height: 40px;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  right: 20px;
+  top: 20px;
+}
+.gig-gallery-component .image-gallery:hover .image-gallery-fullscreen-button {
+  opacity: 1;
+}
+.gig-gallery-component .fullscreen .image-gallery-slide img{
+  height: 100vh;
+}
+.gig-gallery-component .image-gallery-slide.center img {
+  transition: all 0.4s;
+}
+.gig-gallery-component .image-gallery:hover .image-gallery-slide.center img {
+  transform: scale(1.02);
+}
+.gig-gallery-component .image-gallery-fullscreen-button svg {
+  height: 13px;
+  width: 13px;
+  margin-right: 5px;
+}
+.gig-gallery-component .image-gallery-fullscreen-button::after {
+  content: "Full screen";
+  font-size: 14px;
+  line-height: 32px;
+}
+.gig-gallery-component
+  .image-gallery-thumbnails
+  .image-gallery-thumbnails-container {
+  text-align: left;
+}
+.gig-gallery-component
+  .image-gallery
+  .fullscreen
+  .image-gallery-thumbnails-wrapper {
+  display: none;
+}
+
+/*======================= END CSS CUSTOM REACT-SLIDER FEATURE DETAIL=======================*/
+.carousel.carousel-slider{
+  overflow: visible;
+}
+.carousel .thumbs-wrapper{
+  margin: 0;
+}
+
+.carousel-reviews .carousel.carousel-slider .control-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -24px;
+  border-radius: 50%;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+  
+}
+.carousel-reviews .carousel.carousel-slider .control-prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: -24px;
+  border-radius: 50%;
+  padding: 0;
+  height: 48px;
+  width: 48px;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+  
+}
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow{
+  opacity: 1;
+}
+.carousel .control-disabled.control-arrow{
+  opacity: 0;
+}
+.carousel-reviews .carousel.carousel-slider .control-prev::before{
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid black;
+}
+.carousel-reviews .carousel.carousel-slider .control-next::before{
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid black;
+}
+/*======================= START CSS CATEGORIES FEATURE=======================*/
+.layout-row {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+/*======================= END CSS CATEGORIES FEATURE =======================*/
 @media screen and (max-width: 992px) {
   .popular .ant-carousel .slick-prev {
     left: 85%;
@@ -95,3 +276,29 @@
     left: 82%;
   }
 }
+/*======================= START REPOINSIVE CATEGORIES FEATURE =======================*/
+/*======================= LAGRE DEVICES =======================*/
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+  .layout-row {
+    max-width: 1024px;
+  }
+}
+/*======================= MEDIUM DEVICES DESKTOP =======================*/
+@media screen and (max-width: 1023.98px) and (min-width: 768px) {
+  .layout-row {
+    max-width: 768px;
+  }
+}
+/*======================= SMALL DEVICES DESKTOP =======================*/
+@media screen and (max-width: 767.98px) and (min-width: 640px) {
+  .layout-row {
+    max-width: 640px;
+  }
+}
+/*======================= EXTRA SMALL DEVICES DESKTOP =======================*/
+@media screen and (min-width: 639.98px) {
+  .layout-row {
+  }
+}
+/*======================= END REPOINSIVE CATEGORIES FEATURE =======================*/

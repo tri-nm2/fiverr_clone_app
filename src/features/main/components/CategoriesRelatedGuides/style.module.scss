@@ -1,0 +1,141 @@
+.guides-wrapper {
+  border-top: 1px solid #dadbdd;
+  border-bottom: 1px solid #dadbdd;
+  padding: 50px 20px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  h2 {
+    text-align: left;
+    font-size: 32px;
+    padding-bottom: 30px;
+    line-height: 120%;
+    font-weight: 700;
+  }
+  .wrapper {
+    order: 3;
+    width: 100%;
+    display: flex;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    .guide {
+      flex: 1 1 auto;
+      margin-bottom: 24px;
+      margin-right: 25px;
+      min-height: 200px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 4px;
+        height: 100%;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        &:last-child {
+          
+        }
+      }
+      .img-guide {
+        margin-bottom: 16px;
+        display: block;
+        width: 100%;
+        height: 80%;
+      }
+      h6 {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+  }
+  .see-more-link {
+    color: #446ee7;
+    display: flex;
+    align-items: center;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+/*======================= START REPOINSIVE CATEGORIES FEATURE =======================*/
+/*======================= LAGRE DEVICES =======================*/
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+  
+}
+/*======================= MEDIUM DEVICES DESKTOP =======================*/
+@media screen and  (max-width: 1023.98px) and (min-width: 768px) {
+  .guides-wrapper {
+    flex-direction: column;
+    .wrapper{
+      order: 0;
+      .guide {
+        flex: 0 0  auto;
+        flex-basis: 100%;
+        margin-bottom: 0;
+        margin-right: 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+   
+    .see-more-link{
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}
+/*======================= SMALL DEVICES DESKTOP =======================*/
+@media screen and  (max-width: 767.98px ) and (min-width: 640px) {
+  .guides-wrapper {
+    flex-direction: column;
+    .wrapper{
+      order: 0;
+      .guide {
+        flex: 0 0  auto;
+        flex-basis: 100%;
+        margin-bottom: 0;
+        margin-right: 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+   
+    .see-more-link{
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}
+/*======================= EXTRA SMALL DEVICES DESKTOP =======================*/
+@media screen and (max-width: 639.98px) {
+  .guides-wrapper {
+    flex-direction: column;
+    .wrapper{
+      order: 0;
+      .guide {
+        flex: 0 0  auto;
+        flex-basis: 100%;
+        margin-bottom: 0;
+        margin-right: 0;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+   
+    .see-more-link{
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}
+/*======================= END REPOINSIVE CATEGORIES FEATURE =======================*/

@@ -1,0 +1,35 @@
+.box-item{
+    width: 193px;
+    height: 144px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    border: 1px solid #e4e5e7;
+    color: #222325;
+    padding: 17px;
+    cursor: pointer;
+    box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%), 0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
+    img{
+        width: 48px;
+       height: 48px;
+       margin-bottom: 20px;
+    }
+    .text{
+        font-size: 14px;
+        line-height: 21px;
+        font-weight: 600;
+    
+    }
+    &:hover{
+        box-shadow: 0 3.4623px 6.1418px rgb(0 0 0 / 5%), 0 7.92923px 12.9218px rgb(0 0 0 / 5%), 0 9px 15px rgb(0 0 0 / 8%);
+    }
+  
+}
+.item-wrapper{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    a:hover{
+        color: #1dbf73;
+    }
+}
