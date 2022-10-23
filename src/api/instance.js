@@ -8,4 +8,13 @@ const instace = axios.create({
   },
 });
 
+instace.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  config.headers = {
+    ...config.headers,
+    token: token,
+  };
+  return config;
+});
+
 export default instace;

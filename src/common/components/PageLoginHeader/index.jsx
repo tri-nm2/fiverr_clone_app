@@ -163,6 +163,8 @@ function PageLoginHeader() {
   //Events
   const handleLogout = () => {
     dispatch(authenReducer.actions.clearUserInfo());
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
     if (location.pathname === "/profile") {
       history.push("/");
     }

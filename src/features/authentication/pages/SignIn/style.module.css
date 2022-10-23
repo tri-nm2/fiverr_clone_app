@@ -1,0 +1,103 @@
+.signInForm {
+  max-width: 400px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px 20px;
+  box-shadow: 0 0 8px #95979d;
+  margin-top: 35px;
+}
+
+.signInForm .inputGroup {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.signInForm .inputGroup .errorMessage {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
+.signInForm .btnSocial {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 12px 24px;
+  margin-bottom: 20px;
+}
+
+.signInForm .btnSocial svg {
+  margin-right: 10px;
+}
+
+.signInForm .btnFacebook {
+  background-color: #4267b2;
+  border: 1px solid #4267b2;
+  color: #fff;
+}
+
+.signInForm .btnFacebook svg {
+  fill: #fff;
+}
+
+.signInForm .btnFacebook:hover {
+  opacity: 0.9;
+}
+
+.signInForm .btnGoogle,
+.signInForm .btnApple {
+  border: 1px solid #e4e5e7;
+  color: #62646a;
+}
+
+.signInForm .btnGoogle:hover,
+.signInForm .btnApple:hover {
+  background-color: #fafafa;
+}
+
+.signInForm .seperator {
+  width: 100%;
+  border-bottom: 1px solid #e4e5e7;
+  height: 12px;
+  margin: 20px 0 32px;
+  text-align: center;
+}
+
+.signInForm .seperator span {
+  color: #62646a;
+  background-color: #fff;
+  padding: 0px 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.signInForm .btnSignIn {
+  width: 100%;
+  background-color: #1dbf73;
+  color: #fff;
+  padding: 12px 24px;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.signInForm .btnSignIn:hover {
+  background-color: #19a463;
+}
+
+.signInForm .forgotPassword a {
+  color: #1dbf73;
+}
+
+.signInForm .forgotPassword a:hover {
+  color: #1dbf73;
+  text-decoration: underline;
+}

@@ -1,0 +1,113 @@
+.signUpForm {
+  max-width: 400px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px 20px;
+  box-shadow: 0 0 8px #95979d;
+  margin-top: 35px;
+}
+
+.signUpForm .inputGroup {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.signUpForm .inputGroup .errorMessage {
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
+.signUpForm .btnSocial {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 12px 24px;
+  margin-bottom: 20px;
+}
+
+.signUpForm .btnSocial svg {
+  margin-right: 10px;
+}
+
+.signUpForm .btnFacebook {
+  background-color: #4267b2;
+  border: 1px solid #4267b2;
+  color: #fff;
+}
+
+.signUpForm .btnFacebook svg {
+  fill: #fff;
+}
+
+.signUpForm .btnFacebook:hover {
+  opacity: 0.9;
+}
+
+.signUpForm .btnGoogle,
+.signUpForm .btnApple {
+  border: 1px solid #e4e5e7;
+  color: #62646a;
+}
+
+.signUpForm .btnGoogle:hover,
+.signUpForm .btnApple:hover {
+  background-color: #fafafa;
+}
+
+.signUpForm .seperator {
+  width: 100%;
+  border-bottom: 1px solid #e4e5e7;
+  height: 12px;
+  margin: 20px 0 32px;
+  text-align: center;
+}
+
+.signUpForm .seperator span {
+  color: #62646a;
+  background-color: #fff;
+  padding: 0px 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.signUpForm .btnSignUp {
+  width: 100%;
+  background-color: #1dbf73;
+  color: #fff;
+  padding: 12px 24px;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.signUpForm .btnSignUp:hover {
+  background-color: #19a463;
+}
+
+.signUpForm .member {
+  width: 100%;
+  border-top: 1px solid #dadbdd;
+  color: #62646a;
+  font-weight: 500;
+  margin-top: 20px;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+.signUpForm .member a {
+  color: #1dbf73;
+}
+
+.signUpForm .member a:hover {
+  color: #1dbf73;
+  text-decoration: underline;
+}

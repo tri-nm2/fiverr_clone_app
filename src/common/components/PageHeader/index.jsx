@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Style from "./style.module.css";
 import { Dropdown, Menu, Drawer } from "antd";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function PageHeader() {
@@ -27,7 +27,7 @@ function PageHeader() {
   const mobileMenuItems = [
     {
       key: "item1",
-      label: <Link to="/">Sign in</Link>,
+      label: <Link to="/signin">Sign in</Link>,
     },
     {
       key: "item2",
@@ -101,7 +101,15 @@ function PageHeader() {
       label: <Link to="/">$ USD</Link>,
     },
   ];
+  const history = useHistory();
 
+  //Events
+  const handleJoin = () => {
+    history.push("/signup");
+  };
+  //Events
+
+  //Other Functions
   const renderMenu = () => {
     const tag = menuData.map((categories, index) => {
       const itemsList = categories.dsNhomChiTietLoai.map((group, index) => {
@@ -133,7 +141,7 @@ function PageHeader() {
 
     return tag;
   };
-
+  //Other Functions
   return (
     <div className="container mx-auto">
       <header className={`w-full bg-white ${Style.header}`}>
@@ -241,6 +249,9 @@ function PageHeader() {
           <div className="md:col-start-12 col-start-11 col-span-2 h-full flex items-center">
             <button
               className={`col-start-12 border-black rounded px-5 py-0.5 ${Style.btnJoin}`}
+              onClick={() => {
+                handleJoin();
+              }}
             >
               Join
             </button>
@@ -263,6 +274,9 @@ function PageHeader() {
           <div>
             <button
               className={`text-base text-white font-semibold px-6 py-2 ${Style.drawerJoinButton}`}
+              onClick={() => {
+                handleJoin();
+              }}
             >
               Join Fiverr
             </button>

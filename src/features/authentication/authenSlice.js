@@ -7,6 +7,9 @@ const authenSlice = createSlice({
     userInfo: null,
   },
   reducers: {
+    addUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
     clearUserInfo: (state) => {
       state.userInfo = null;
     },
