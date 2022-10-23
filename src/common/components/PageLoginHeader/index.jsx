@@ -159,6 +159,7 @@ function PageLoginHeader() {
       label: <Link to="/">$ USD</Link>,
     },
   ];
+  const avatarName = userInfo.name.slice(0, 1);
 
   //Events
   const handleLogout = () => {
@@ -307,12 +308,19 @@ function PageLoginHeader() {
                   setOpenMenu(!openMenu);
                 }}
               >
-                {userInfo?.avatar && (
+                {userInfo?.avatar ? (
                   <img
                     className="w-full h-full rounded-full"
                     src={userInfo.avatar}
                     alt="error"
                   ></img>
+                ) : (
+                  <div
+                    className="h-full w-full rounded-full bg-gray-300 flex 
+                    justify-center items-center"
+                  >
+                    <span className="uppercase">{avatarName}</span>
+                  </div>
                 )}
               </button>
               <div className={`${openMenu ? "block" : "hidden"}`}>
