@@ -6,14 +6,20 @@ import Style from "./style.module.css";
 import moment from "moment";
 import instace from "api/instance";
 import { fetchUserInfoAction } from "features/authentication/action";
+import { getToday } from "common/ultils/date";
 
 function UserInfoForm(props) {
   const userInfo = useSelector((state) => state.authen.userInfo);
+  const birthDay =
+    userInfo.birthday === "string" || userInfo.birthday === ""
+      ? moment(getToday(), "DD/MM/YYYY")
+      : userInfo.birthday;
+  console.log(birthDay);
   const formik = useFormik({
     initialValues: {
       name: userInfo.name,
       phone: userInfo.phone,
-      birthday: userInfo.birthday,
+      birthday: birthDay,
       gender: userInfo.gender,
     },
     onSubmit: (values) => {
