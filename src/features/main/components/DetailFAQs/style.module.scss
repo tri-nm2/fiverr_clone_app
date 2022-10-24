@@ -1,0 +1,40 @@
+.section-tilte{
+    font-size: 20px;
+  line-height: 28px;
+  padding-bottom: 25px;
+  color: #404145;
+  font-weight: 700;
+}
+.faq-item{
+   .faq-title{
+    padding: 20px 0;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+   }
+   .faq-icon-down{
+    svg{
+        transition: all 0.4s;
+        transform: rotate(0);
+    }
+   
+   }
+   .faq-content{
+    transition: all 1s;
+    overflow: hidden;
+    height: 0;
+   }
+   &:not(:last-child){
+    border-bottom: 1px solid #dadbdd;
+   }
+}
+.faq-item.show .faq-content{
+    height: 45px;
+}
+.faq-item.show .faq-icon-down{
+    svg{
+        transform: rotate(-180deg);
+       }
+}

@@ -1,0 +1,35 @@
+.related-links{
+    width: 100%;
+    border-top: 1px solid #dadbdd;
+    padding: 50px 20px 30px;
+    text-align: center;
+    h2{
+        font-size: 32px;
+        padding-bottom: 30px;
+        line-height: 120%;
+        font-weight: 700;
+    }
+    ul{
+        text-align: center;
+        li{
+            display: inline-block;
+            .related-link{
+                display: inline-block;
+                border-color: transparent;
+                background-color: #efeff0;
+                color: #62646a;
+                font-size: 14px;
+                line-height: 120%;
+                padding: 10px 20px;
+                margin: 0 7px 15px;
+                border-radius: 20px;
+            }
+            a{
+                &:hover{
+                    text-decoration: underline;
+                    outline: none;
+                }
+            }
+        }
+    }
+}

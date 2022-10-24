@@ -1,0 +1,33 @@
+.comment-wrapper{
+    display: flex;
+   
+}
+.profile-image{
+    img{
+        display: block;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+}
+.form-comment-wrapper{
+    flex-grow: 1;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+.form-button {
+    margin-top: 12px;
+  button {
+    background-color: #1dbf73;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    
+    &:hover{
+        background: #19a463;
+    }
+  }
+}

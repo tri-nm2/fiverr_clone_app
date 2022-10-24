@@ -1,0 +1,42 @@
+.list-container{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 32px;
+}
+.pagination{
+    margin: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg{
+      vertical-align: baseline;
+    }
+}
+/*======================= START REPOINSIVE CATEGORIES FEATURE =======================*/
+/*======================= LAGRE DEVICES =======================*/
+
+@media screen and (min-width: 1024px) {
+ 
+  }
+  /*======================= MEDIUM DEVICES DESKTOP =======================*/
+  @media screen and  (max-width: 1023.98px) and (min-width: 768px) {
+    .list-container{
+      display: flex;
+      flex-direction: column;
+  }
+  }
+  /*======================= SMALL DEVICES DESKTOP =======================*/
+  @media screen and  (max-width: 767.98px ) and (min-width: 640px) {
+    .list-container{
+      display: flex;
+      flex-direction: column;
+  }
+  }
+  /*======================= EXTRA SMALL DEVICES DESKTOP =======================*/
+  @media screen and (max-width: 639.98px) {
+    .list-container{
+      display: flex;
+      flex-direction: column;
+  }
+  }
+  /*======================= END REPOINSIVE CATEGORIES FEATURE =======================*/

@@ -12,6 +12,7 @@ import { fetchUserInfoAction } from "features/authentication/action";
 import { fetchMenuDataAction } from "features/main/action";
 import { useDispatch } from "react-redux";
 
+
 function App() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -29,6 +30,8 @@ function App() {
     import("features/authentication/pages/SignUp")
   );
 
+  const Categories = React.lazy(() => import("features/main/pages/Categories"));
+  const Detail = React.lazy(() => import("features/main/pages/Detail"));
   //Hooks
   useEffect(() => {
     if (userId) {
@@ -49,6 +52,8 @@ function App() {
             <PageTemplate path="/signup" Component={SignUp} />
             <PageTemplate path="/profile" Component={UserProfile} />
             <PageTemplate path="/jobtype/:id" Component={JobType} />
+            <PageTemplate path="/categories/:tenLoaiCongViec/:tenChitiet" Component={Categories} />
+            <PageTemplate path="/detail/:tenLoaiCongViec/:tenChitiet/:id" Component={Detail} />
           </Switch>
         </Suspense>
       </div>

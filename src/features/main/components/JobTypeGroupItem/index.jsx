@@ -4,12 +4,14 @@ import Style from "./style.module.css";
 
 function JobTypeGroupItem(props) {
   const detail = props.item;
+  const  groupList = props.groupList;
+ console.log(groupList)
   //Other functions
   const renderDetailList = () => {
     const tag = detail?.dsChiTietLoai.map((item) => {
       return (
         <div key={item.id} className={Style.innerLink}>
-          <Link to="/">{item.tenChiTiet}</Link>
+          <Link to={`/categories/${groupList[0].tenLoaiCongViec}/${item.tenChiTiet}`}>{item.tenChiTiet}</Link>
           <svg
             width={16}
             height={16}

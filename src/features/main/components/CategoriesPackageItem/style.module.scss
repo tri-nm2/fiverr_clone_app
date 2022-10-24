@@ -1,0 +1,137 @@
+.card-item-layout{
+    min-width: 245px;
+    .item-wrapper{
+        background-color: #fff;
+        position: relative;
+        border: 1px solid #e4e5e7;
+        width: 100%;
+    }
+}
+.item-wrapper{
+    .media{
+        display: block;
+        // min-height: 200px;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.seller-info{
+    .inner-wrapper{
+        display: flex;
+        box-sizing: border-box;
+        padding: 12px 12px 8px;
+        height: 54px;   
+        width: 100%;
+        .seller-avatar{
+            min-width: 1em;
+            width: 1em;
+            height: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    }
+}
+.seller-identifiers{
+    margin-left: 8px;
+    .seller-name{
+        color: #222325;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        a{
+            line-height: 18px;
+            font-weight: 600;
+            color: #222325;
+        }
+    }
+}
+.seller-info{
+    h3{
+        font-size: 1rem;
+        font-weight: 700;
+        a{
+            font-weight: 400;
+            overflow: hidden;
+            // padding: 0 12px 5px;
+            padding: 0 12px 5px;
+            // margin-top: 5px;
+            line-height: 22px;
+            word-wrap: break-word;
+            display: inline-block;
+            
+            transition: .15s ease-in-out;
+        }
+    }
+    &:hover h3 a {
+        color: #1dbf73;
+    }
+
+    footer{
+        display: flex;
+    }
+}
+.content-info{
+    padding: 10px 12px;
+    .rating-info{
+        display: flex;
+        align-items: center;
+
+        .gig-rating{
+            color: #ffbe5b;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 21px;
+        }
+        span{
+            color: #b5b6ba;
+            font-weight: 400;
+            margin-left: 2px;
+        }
+    }
+   
+ }
+.seller-info{
+    footer{
+        border-top: 1px solid #efeff0;
+        padding: 10px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 24px;
+        .price{
+            font-size: 18px;
+            line-height: 20px;
+            margin-top: 1px;
+            color: #404145;
+            text-align: right;
+            span{
+            padding-left: 6px;
+            }
+        }
+    }
+}
+/*======================= START REPOINSIVE CATEGORIES FEATURE =======================*/
+/*======================= LAGRE DEVICES =======================*/
+
+@media screen and (max-width: 1280px) and (min-width: 1024px) {
+   
+}
+/*======================= MEDIUM DEVICES DESKTOP =======================*/
+@media screen and  (max-width: 1023.98px) and (min-width: 768px) {
+    
+}
+/*======================= SMALL DEVICES DESKTOP =======================*/
+@media screen and  (max-width: 767.98px ) and (min-width: 640px) {
+ 
+}
+/*======================= EXTRA SMALL DEVICES DESKTOP =======================*/
+@media screen and (min-width: 639.98px) {
+ 
+}
+/*======================= END REPOINSIVE CATEGORIES FEATURE =======================*/

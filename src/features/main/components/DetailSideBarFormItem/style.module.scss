@@ -1,0 +1,117 @@
+.form-wrapper {
+  padding-top: 32px;
+  visibility: hidden;
+}
+.form-wrapper.show{
+  visibility: visible;
+}
+.form-content {
+  padding-left: 24px;
+  padding-right: 24px;
+  header {
+    h3 {
+      display: flex;
+
+      .title {
+        flex: 1 1;
+        padding-bottom: 8px;
+        min-height: 48px;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .price {
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+  header > p {
+    font-size: 14px;
+    line-height: 140%;
+    margin-top: 10px;
+  }
+}
+.additional-info {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  .delivery-wrapper,
+  .revisions-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  .revisions-wrapper {
+    margin-left: 16px;
+  }
+  .delivery,
+  .revisions {
+    margin-left: 8px;
+  }
+}
+.collapsable-package-item {
+  position: relative;
+  margin-bottom: 20px;
+  .collapsable-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #404145;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
+}
+.collapsable-content {
+  .features {
+    margin: 8px 0 0;
+    li {
+      display: flex;
+      align-items: center;
+      color: #95979d;
+      span {
+        margin-right: 8px;
+      }
+      svg {
+        fill: #1dbf73;
+      }
+    }
+  }
+}
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.btn-continue {
+  background-color: #1dbf73;
+  color: #fff;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: 70ms cubic-bezier(0.75, 0, 0.25, 1);
+  &:hover{
+    background: #19a463;
+  }
+}
+.btn-compare-packages{
+    background: transparent;
+    border: 0;
+    color: #1dbf73;
+    font-size: 14px;
+    line-height: 21px;
+    padding-top: 12px;
+}

@@ -1,0 +1,163 @@
+.review-item {
+  border-top: 1px solid #dadbdd;
+  padding: 40px 0;
+}
+.profile-card{
+    .review-desc{
+        margin-left: 64px;
+      }
+}
+.user-card {
+  .profile-info {
+   
+    display: flex;
+    align-items: center;
+    .profile-image {
+      .profile-pict {
+        display: flex;
+        position: relative;
+        width: 48px;
+        height: 48px;
+        img {
+          border-radius: 50%;
+          display: block;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+    .profile-label {
+      padding-left: 15px;
+      .username-line {
+        display: flex;
+        .user-info {
+          color: #404145;
+          display: block;
+          font-weight: 700;
+        }
+      
+      }
+    }
+    .one-linner-rating-wrapper {
+      .seller-rating::before {
+        display: none;
+      }
+    }
+  }
+ 
+}
+
+.rating {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 21px;
+  .start {
+    display: flex;
+    align-items: center;
+    .orc-start svg {
+      fill: #ffb33e;
+    }
+  }
+  .rating-score {
+    display: flex;
+    align-items: center;
+    color: #ffb33e;
+    padding-left: 4px;
+    &::after {
+      content: "";
+      display: inline-block;
+      border-right: 1px solid #e4e5e7;
+      margin: 2px 8px;
+      height: 12px;
+    }
+  }
+  .time {
+    padding-left: 4px;
+    cursor: pointer;
+  }
+}
+.country {
+  margin-top: 8px;
+  display: flex;
+  .country-flag {
+    width: 20px;
+    height: 20px;
+  }
+  .country-name {
+    color: #62646a;
+    font-size: 14px;
+    padding-left: 8px;
+  }
+}
+.review-desc {
+  font-size: 400;
+  color: #404145;
+  margin: 12px 0;
+ 
+}
+.reviews-footer {
+    margin-left: 64px;
+  .helpful-thumbs {
+    display: flex;
+    align-items: center;
+  }
+  .helpful-text{
+    color: #404145;
+    font-weight: 600;
+  }
+  .thumbs-icon-wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    font-weight: 600;
+    color: #404145;
+    cursor: pointer;
+    .helpful-thumb {
+      padding-left: 8px;
+    }
+    span {
+        padding-left: 4px;
+      svg {
+        vertical-align: baseline;
+      }
+    }
+  }
+}
+.review-seller-comment{
+    margin-top: 24px;
+  .seller-profile{
+    display: flex;
+    align-items: center;
+  }
+    .profile-image {
+        .profile-pict {
+          display: flex;
+          position: relative;
+          width: 32px;
+          height: 32px;
+          img {
+            border-radius: 50%;
+            display: block;
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+        .username-line {
+            margin-left: 12px;
+          display: flex;
+          .user-info {
+            color: #404145;
+            display: block;
+            font-weight: 700;
+          }
+        
+        }
+        .review-desc{
+            margin-left: 58px;
+        }
+      
+}

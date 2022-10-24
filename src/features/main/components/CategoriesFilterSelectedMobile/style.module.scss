@@ -1,0 +1,73 @@
+.wrapper{
+  padding-bottom: 12px;
+}
+.scroll-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 2;
+  box-shadow: 0 0.266px 1.13052px rgb(0 0 0 / 7%), 0 0.89345px 3.79717px rgb(0 0 0 / 10%), 0 5px 17px rgb(0 0 0 / 17%);
+}
+
+.filter-wrapper{
+ display: flex;
+ justify-content: space-between;
+ margin-top: 24px;
+ margin-bottom: 24px;
+
+ .touch-filter, .sort-button{
+    border: 1px solid #dadbdd;
+    padding: 8px 0;
+    border-radius: 4px;
+    font-size: 12px;
+    height: 42px;
+    width: calc(50% - 5px);
+    color: #404145;
+    background: #fff;
+    cursor: pointer;
+   
+ }
+ .touch-filter, .sort-button{
+  &::before{
+    content: "";
+  
+    fill: #1dbf73;
+    width: 18px;
+    height: 19px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+ }
+ .touch-filter::before{
+  background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/filter-green.09b848a.svg) no-repeat 0 0;
+  background-size: 18px; 
+}
+ .sort-button::before{
+  background: transparent url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/apps/sort.fc5f81c.svg) no-repeat 0 0;
+  background-size: 18px; 
+}
+}
+.ft-toggles-wrapper {
+  display: flex;
+  align-items: center;
+  .tg-menu {
+    &:first-child {
+      margin-left: 0;
+    }
+    margin-left: 32px;
+    .tg-menu-item {
+      display: flex;
+      align-items: center;
+    }
+    .tg-menu-switch {
+      margin-right: 6px;
+    }
+    .tg-label {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
