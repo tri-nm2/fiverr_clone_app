@@ -10,14 +10,15 @@ import CategoriesPackageItemTemplate from '../CategoriesPackageItemTemplate';
 let cx = classNames.bind(styles);
 
 
-function CategoriesListPackage({tenLoaiCongViec,tenChitiet}) {
+function CategoriesListPackage({tenLoaiCongViec,tenChitiet, categoriesData}) {
+  
     return (
         <div>
             <div className='layout-row'>
                 <div className={cx('list-package-wrapper','list-container')}>
-                 <CategoriesPackageItemTemplate tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>
+                 {categoriesData.map( (item,index) =>  <CategoriesPackageItemTemplate key={index} item={item} tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>)}
                 </div>
-                <Pagination defaultCurrent={1} total={50} className={cx('pagination')}/>
+                <Pagination defaultCurrent={1} total={1} className={cx('pagination')}/>
             </div>
         </div>
     );

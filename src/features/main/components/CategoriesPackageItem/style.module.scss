@@ -10,7 +10,7 @@
 .item-wrapper{
     .media{
         display: block;
-        min-height: 200px;
+        // min-height: 200px;
         position: relative;
         img{
             width: 100%;
@@ -58,11 +58,13 @@
         a{
             font-weight: 400;
             overflow: hidden;
+            // padding: 0 12px 5px;
             padding: 0 12px 5px;
-            margin-top: 5px;
+            // margin-top: 5px;
             line-height: 22px;
             word-wrap: break-word;
-            word-break: break-word;
+            display: inline-block;
+            
             transition: .15s ease-in-out;
         }
     }
@@ -108,6 +110,9 @@
             margin-top: 1px;
             color: #404145;
             text-align: right;
+            span{
+            padding-left: 6px;
+            }
         }
     }
 }

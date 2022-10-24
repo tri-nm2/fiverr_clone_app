@@ -6,7 +6,7 @@ import { DownOutlined } from "@ant-design/icons";
 
 let cx = classNames.bind(styles);
 
-function DetailSideBarFormItem({data,check}) {
+function DetailSideBarFormItem({data,check,congViec}) {
   const show = check ? "show": "";
   return (
     <div>
@@ -17,12 +17,11 @@ function DetailSideBarFormItem({data,check}) {
               <h3>
                 <b className={cx("title")}>BASIC Package - Popular {data}</b>
                 <div className={cx("price-wrapper")}>
-                  <span className={cx("price")}>$10</span>
+                  <span className={cx("price")}>${congViec.giaTien}</span>
                 </div>
               </h3>
               <p>
-                3 Awesome Logo + Free Revisions + HD JPG and Transparent PNG +
-                Vector Files -No Mascot design
+                {congViec.moTaNgan}
               </p>
             </header>
 
@@ -98,7 +97,7 @@ function DetailSideBarFormItem({data,check}) {
             <footer className={cx("form-footer")}>
             <button className={cx("btn-continue")}>
               <span>Continue</span>
-              <span>10$</span>
+              <span> ${congViec.giaTien}</span>
             </button>
             <button className={cx("btn-compare-packages")}>Compare Packages</button>
           </footer>

@@ -8,7 +8,7 @@ import CategoriesRelatedLinks from "features/main/components/CategoriesRelatedLi
 
 import { useWindowSize } from "common/hooks/windowSize";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import classNames from "classnames/bind";
@@ -16,13 +16,48 @@ import styles from "./style.module.scss";
 
 import { PlayCircleFilled } from "@ant-design/icons";
 import CategoriesFilterSelectedMobile from "features/main/components/CategoriesFilterSelectedMobile";
-import CategoriesFilterTouchMobile from "features/main/components/CategoriesFilterSortTouchMobile";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoriesData } from "./action";
 
 let cx = classNames.bind(styles);
 
 function Categories(props) {
   const { tenLoaiCongViec, tenChitiet } = useParams();
+  const menuData = useSelector((state) => state.main.menuData);
+  const categoriesData = useSelector(
+    (state) => state.categories.categoriesData
+  );
   const windowSize = useWindowSize();
+  const dispatch = useDispatch();
+
+  const jobMenu = menuData.findIndex(
+    (value,index) => value.tenLoaiCongViec === tenLoaiCongViec
+  );
+  const getIdMenuType = () => {
+    // console.log(tenLoaiCongViec);
+    if (menuData === null) return;
+    const indexMenu = menuData.findIndex(
+      (value) => value.tenLoaiCongViec === tenLoaiCongViec
+    );
+    const currentMenuItem = menuData[indexMenu];
+    const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+      (item) => {
+        let index = item.dsChiTietLoai.findIndex(
+          (value) => value.tenChiTiet === tenChitiet
+        );
+        if (index != -1) {
+          return item.dsChiTietLoai[index].id;
+        }
+        return -1;
+      }
+    );
+    let idMenuDetail = currentMenuListItem.find((value) => value != -1);
+    // console.log(idMenuDetail);
+    return idMenuDetail;
+  };
+  useEffect(() => {
+    dispatch(fetchCategoriesData(getIdMenuType()));
+  }, [tenChitiet]);
   return (
     <div>
       <div className="layout-row">
@@ -42,9 +77,7 @@ function Categories(props) {
               </span>
             </li>
             <li>
-              <Link to={`/categories/${tenLoaiCongViec}/${tenChitiet}`}>
-                {tenLoaiCongViec}
-              </Link>
+              <Link to={`/jobtype/${menuData[jobMenu].id}`}>{tenLoaiCongViec}</Link>
               <span>
                 <svg
                   width="8"
@@ -57,26 +90,34 @@ function Categories(props) {
               </span>
             </li>
           </ul>
-          <header  className={cx('subcategory-header')}>
-                <div className={cx('title-wrapper')}>
-                        <h1>{tenChitiet}</h1>
-                    <div className={cx('explanation-video')}>
-                    <p className={cx('sc-subtitle')}>
-                    Add features to your website with custom web applications and
-                    extensions
-                    </p>
-                    <button className={cx('btn-play')}>
-                    <PlayCircleFilled />
-                    <span>How Fiverr Works</span>
-                    </button>
-                    </div>
-                </div>
+          <header className={cx("subcategory-header")}>
+            <div className={cx("title-wrapper")}>
+              <h1>{tenChitiet}</h1>
+              <div className={cx("explanation-video")}>
+                <p className={cx("sc-subtitle")}>
+                  Add features to your website with custom web applications and
+                  extensions
+                </p>
+                <button className={cx("btn-play")}>
+                  <PlayCircleFilled />
+                  <span>How Fiverr Works</span>
+                </button>
+              </div>
+            </div>
           </header>
         </header>
       </div>
       <CategoriesCarousel />
-      {windowSize.width > 1024 ? <CategoriesFilterSelected/>:  <CategoriesFilterSelectedMobile/>}
-      <CategoriesListPackage tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>
+      {windowSize.width > 1024 ? (
+        <CategoriesFilterSelected />
+      ) : (
+        <CategoriesFilterSelectedMobile />
+      )}
+      <CategoriesListPackage
+        categoriesData={categoriesData}
+        tenLoaiCongViec={tenLoaiCongViec}
+        tenChitiet={tenChitiet}
+      />
       <CategoriesRelatedLinks />
       <CategoriesFAQs />
       <CategoriesRelatedGuides />

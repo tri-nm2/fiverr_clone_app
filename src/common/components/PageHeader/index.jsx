@@ -108,7 +108,7 @@ function PageHeader() {
         const childList = group.dsChiTietLoai.map((detail) => {
           return {
             key: detail.id,
-            label: <Link to="/">{detail.tenChiTiet}</Link>,
+            label: <Link to={`/categories/${categories.tenLoaiCongViec}/${detail.tenChiTiet}`}>{detail.tenChiTiet}</Link>,
           };
         });
 

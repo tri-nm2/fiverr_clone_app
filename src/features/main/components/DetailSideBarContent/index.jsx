@@ -7,11 +7,10 @@ import { useScrollPosition } from "common/hooks/scrollPostion";
 
 let cx = classNames.bind(styles);
 
-function DetailSideBarContent(props) {
+function DetailSideBarContent({congViec}) {
     const [check, setCheck] = useState(1);
     const scrollPosition = useScrollPosition();
     const handlescroll = scrollPosition > 120 ? "scroll-fixed" : "";
-
     function handleCheck(index){
         setCheck(index);
     }
@@ -30,9 +29,9 @@ function DetailSideBarContent(props) {
                 <span>Premium</span>
             </button>
         </div>
-        {check === 1 ? <DetailSideBarFormItem data={"TAB 1"} check={true}/> : <></>}
-        {check === 2 ? <DetailSideBarFormItem data={"TAB 2"} check={true}/> : <></>}
-        {check === 3 ? <DetailSideBarFormItem data={"TAB 3"} check={true}/> : <></>}
+        {check === 1 ? <DetailSideBarFormItem data={"TAB 1"} check={true} congViec={congViec}/> : <></>}
+        {check === 2 ? <DetailSideBarFormItem data={"TAB 2"} check={true}  congViec={congViec}/> : <></>}
+        {check === 3 ? <DetailSideBarFormItem data={"TAB 3"} check={true}  congViec={congViec}/> : <></>}
       </div>
     </div>
   );

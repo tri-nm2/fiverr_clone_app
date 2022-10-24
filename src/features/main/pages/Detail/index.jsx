@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ImageGallery from "react-image-gallery";
 import { Carousel } from "react-responsive-carousel";
 import { Link, useParams } from "react-router-dom";
@@ -21,28 +21,40 @@ import DetailReviewsPackage from "features/main/components/DetailReviewsPackage"
 import DetailReviewsList from "features/main/components/DetailReviewsList";
 import DetailUserComment from "features/main/components/DetailUserComment";
 import DetailSideBarContent from "features/main/components/DetailSideBarContent";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDataComment, fetchDataDetail, fetchDataUser } from "./action";
+import _ from "lodash";
 
 let cx = classNames.bind(styles);
 
 function Detail(props) {
   const scrollPosition = useScrollPosition();
-  const { tenLoaiCongViec, tenChitiet } = useParams();
+  const { tenLoaiCongViec, tenChitiet, id } = useParams();
   const handlescroll = scrollPosition > 120 ? "scroll-wrapper" : "";
+  const menuData = useSelector((state) => state.main.menuData);
+  const detailData = useSelector((state) => state.detail.detailData);
+  const detail = detailData[0];
+  const userData = useSelector((state) => state.detail.userData);
+
+  const user = userData[0];
+  const dispatch = useDispatch();
+  function getJobType(){
+    const jobtype =  menuData.findIndex( item => item.tenLoaiCongViec === tenLoaiCongViec);
+    return menuData[jobtype].id;
+  }
+  useEffect(() => {
+    dispatch(fetchDataDetail(id));
+    dispatch(fetchDataUser(detail.tenNguoiTao));
+    // dispatch(fetchDataComment(id));
+    getJobType();
+  }, []);
   const images = [
     {
-      original:
-        "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20220310/Minimalist_Gig_01_hywgse.jpg",
-      thumbnail:
-        "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_thumb_ver3,f_jpg/20220310/Minimalist_Gig_01_hywgse.jpg",
-    },
-    {
-      original:
-        "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693/create-3-original-logo-with-vector-source-file.jpg",
-      thumbnail:
-        "https://fiverr-res.cloudinary.com/images/t_thumbnail3_3,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693/create-3-original-logo-with-vector-source-file.jpg",
+      original: detail.congViec.hinhAnh,
+      thumbnail: detail.congViec.hinhAnh,
     },
   ];
+
   return (
     <div className="layout-row">
       <div className={cx("top-nav", `${handlescroll}`)}>
@@ -129,7 +141,7 @@ function Detail(props) {
           <nav>
             <ul className={cx("breadcrumbs")}>
               <li>
-                <Link to={`/categories/${tenLoaiCongViec}/${tenChitiet}`}>
+                <Link to={`/jobtype/${getJobType()}`}>
                   {tenLoaiCongViec}
                 </Link>
                 <span>
@@ -160,19 +172,16 @@ function Detail(props) {
               </li>
             </ul>
           </nav>
-          <h1>I will write, rewrite, paraphrase, articles and web content</h1>
+          <h1>{detail.congViec.tenCongViec}</h1>
           <div id="overview" className={cx("seller-overview")}>
             <div className={cx("seller-image")}>
               <figure>
                 <figcaption>e</figcaption>
-                <img
-                  src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/4c0a2ce1253c0806c00ae813cc6ed65f-1661551110938/221bad63-0b67-4430-a58d-4083ee3e58c6.png"
-                  alt="encodersltd"
-                />
+                <img src={detail.avatar} alt="encodersltd" />
               </figure>
             </div>
             <div className={cx("seller-content")}>
-              <div className={cx("seller-name")}>encodersltd</div>
+              <div className={cx("seller-name")}>{detail.tenNguoiTao}</div>
               <div className={cx("seller-level")}>
                 <span>Level 1 Seller</span>
               </div>
@@ -229,8 +238,12 @@ function Detail(props) {
                     </svg>
                   </span>
                 </div>
-                <b className={cx("rating-score")}>5</b>
-                <span className={cx("rating-count")}>(5)</span>
+                <b className={cx("rating-score")}>
+                  {detail.congViec.saoCongViec}
+                </b>
+                <span className={cx("rating-count")}>
+                  ({detail.congViec.danhGia})
+                </span>
               </div>
               <div className={cx("seller-order")}>1 Order in Queue</div>
             </div>
@@ -246,7 +259,11 @@ function Detail(props) {
               <button className={cx("reviews-button")}>See all reviews</button>
             </header>
             <div className={cx("carousel-reviews")}>
-              <Carousel showIndicators={false} showStatus={false}>
+              <Carousel
+                showIndicators={false}
+                showStatus={false}
+                showThumbs={false}
+              >
                 <div>
                   <div className={cx("carousel-item")}>
                     <div className={cx("user-profile")}>
@@ -436,6 +453,7 @@ function Detail(props) {
             </header>
             <div className={cx("description-content")}>
               <p>Hi there ! Thanks for stopping by !!</p>
+              <p>{detail.congViec.moTa}</p>
               <p>
                 <br />
               </p>
@@ -533,22 +551,27 @@ function Detail(props) {
               <div className={cx("profile-info")}>
                 <div className={cx("profile-image")}>
                   <label className={cx("profile-pict")}>
-                    <img
-                      src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/044fb5914a845a4eb59fc2b69f7f7b32-1634120039750/4dbc2acb-7322-4cd0-9afb-e5190e8e8a0d.jpg"
-                      alt="seller-card"
-                    />
+                    <img src={user.avatar} alt="seller-card" />
                     <a className={cx("level-two-seller")}></a>
                   </label>
                 </div>
                 <div className={cx("profile-label")}>
                   <div className={cx("username-line")}>
-                    <a className={cx("seller-link")}>desigin_desk</a>
+                    <a className={cx("seller-link")}>{user.name}</a>
                     <div className={cx("status")}>
-                      <span><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" /></svg></span>Online
+                      <span>
+                        <svg
+                          viewBox="0 0 16 16"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z" />
+                        </svg>
+                      </span>
+                      Online
                     </div>
                   </div>
                   <div className={cx("one-linner-rating-wrapper")}>
-                    <p className={cx("one-liner")}>Your design solution</p>
+                    <p className={cx("one-liner")}></p>
                     <div className={cx("seller-rating")}>
                       <div className={cx("start")}>
                         <span className={cx("orc-start")}>
@@ -602,8 +625,8 @@ function Detail(props) {
                           </svg>
                         </span>
                       </div>
-                      <b className={cx("rating-score")}>4.3</b>
-                      <span className={cx("rating-count")}>(33,666)</span>
+                      <b className={cx("rating-score")}></b>
+                      <span className={cx("rating-count")}></span>
                     </div>
                   </div>
                   <button className={cx("btn-contact-me")}>Contact me</button>
@@ -613,21 +636,21 @@ function Detail(props) {
             <div className={cx("profile-desc")}>
               <ul className={cx("user-stats")}>
                 <li>
-                  From<strong>India</strong>
+                  Birthday<strong>{user.birthday}</strong>
                 </li>
                 <li>
-                  Member since<strong>Jun 2014</strong>
+                  Gender<strong>{user.gender ? "Male" : "Female"}</strong>
                 </li>
                 <li>
-                  Avg. response time<strong>1 hour</strong>
+                  Email<strong>{user.email}</strong>
                 </li>
                 <li>
-                  Last delivery<strong>about 18 minutes</strong>
+                  Certification<strong>{user.certification}</strong>
                 </li>
               </ul>
-              <article className={cx("seller-desc")}>
+              {/* <article className={cx("seller-desc")}>
                 <div className={cx("inner")}>
-                  Hello! My name is VD.  I am a connoisseur of art and music. I
+                  Hello! My name is VD. I am a connoisseur of art and music. I
                   love being around nature and my pets. I have a team of
                   professional graphic designers with an experience of 8+ years.
                   We specialize in logo designing. We're available exclusively
@@ -635,16 +658,16 @@ function Detail(props) {
                   and experience it for yourself!{" "}
                 </div>
                 <button className={cx("read-more")}>+ See More</button>
-              </article>
+              </article> */}
             </div>
           </div>
           <DetailFAQs />
           <DetailReviewsPackage />
-          <DetailReviewsList/>
+          <DetailReviewsList id={id} />
           <DetailUserComment />
         </div>
         <div className={cx("side-bar")}>
-          <DetailSideBarContent/>
+          <DetailSideBarContent congViec={detail.congViec} />
         </div>
       </div>
     </div>

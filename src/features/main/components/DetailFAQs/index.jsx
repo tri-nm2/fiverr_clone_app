@@ -23,7 +23,8 @@ function DetailFAQs(props) {
                 <article className={open === 1 ? cx("faq-item","show") : cx("faq-item")}>
                     <div className={cx("faq-title")}>
                         <div>
-                            <p class="question">What is a vector file?</p>
+                           <p className="question">What is a vector file?</p>
+
                         </div>
                         <div className={cx("faq-icon-down")} onClick={() => {handleOpen(1)}}>
                             <DownOutlined />
@@ -36,7 +37,8 @@ function DetailFAQs(props) {
                 <article className={open === 2 ? cx("faq-item","show") : cx("faq-item")}>
                     <div className={cx("faq-title")}>
                         <div>
-                            <p class="question">What does '3 logo design or 5 Logo Design' means?</p>
+                            <p className="question">What does '3 logo design or 5 Logo Design' means?</p>
+
                         </div>
                         <div className={cx("faq-icon-down")} onClick={() => {handleOpen(2)}}>
                             <DownOutlined />
@@ -49,7 +51,8 @@ function DetailFAQs(props) {
                 <article className={open === 3 ? cx("faq-item","show") : cx("faq-item")}>
                     <div className={cx("faq-title")}>
                         <div>
-                            <p class="question">What does Unlimited revisions mean?</p>
+                            <p className="question">What does Unlimited revisions mean?</p>
+
                         </div>
                         <div className={cx("faq-icon-down")} onClick={() => {handleOpen(3)}}>
                             <DownOutlined />

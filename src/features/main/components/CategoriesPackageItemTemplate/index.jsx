@@ -9,11 +9,11 @@ import CategoriesPackageItemMobile from "../CategoriesPackageItemMobile";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItemTemplate({tenLoaiCongViec,tenChitiet}) {
+function CategoriesPackageItemTemplate({tenLoaiCongViec,tenChitiet, item}) {
   const windowSize = useWindowSize();
   return (
     <div>
-      {windowSize.width > 1024 ? <CategoriesPackageItem tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>:  <CategoriesPackageItemMobile tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>}
+      {windowSize.width > 1024 ? <CategoriesPackageItem item={item} tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>:  <CategoriesPackageItemMobile item={item} tenLoaiCongViec={tenLoaiCongViec} tenChitiet={tenChitiet}/>}
     </div>
   );
 }

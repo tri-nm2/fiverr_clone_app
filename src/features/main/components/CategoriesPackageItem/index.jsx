@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItem({tenLoaiCongViec,tenChitiet}) {
+function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item}) {
+
   return (
     <div className={cx("card-item-layout")}>
       <div className={cx("item-wrapper")}>
         <a className={cx("media")}>
           <div className={cx("slider")}>
-            <img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/192581572/original/e1348de0e280d8ee07a77e23d0bed539dc5f439a.png"/>
+            <img src={item.congViec.hinhAnh}/>
           </div>
         </a>
         <div className={cx("seller-info")}>
@@ -29,17 +30,17 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet}) {
                   <figcaption className="-nS+a5p"></figcaption>
                   <img
                     className="_2Um2N63"
-                    src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/fe3b03671dd8175306afacb754c4fd86-1611412459162/232680a6-3384-4c0a-9c26-cebefe45aa1c.jpeg"
+                    src={item.avatar}
                     alt="ryancanadadev"
                   />
                 </figure>
               </div>
             </span>
             <div className={cx("seller-identifiers")}>
-              <span className={cx("seller-name")}><a>Truong Cong Bac</a></span>
+              <span className={cx("seller-name")}><a>{item.tenNguoiTao}</a></span>
             </div>
           </div>
-          <h3><Link to={`/detail/${tenLoaiCongViec}/${tenChitiet}/1`}>Ten cua cong viec</Link></h3>
+          <h3><Link to={`/detail/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
           <div className={cx("content-info")}>
             <div className={cx("rating-info")}>
               <span className={cx("gig-rating")}>
@@ -55,8 +56,8 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet}) {
                   />
                 </svg>
               </span>
-              <span className={cx("gig-rating")}> 5.0</span>
-              <span>(40)</span>
+              <span className={cx("gig-rating")}>{item.congViec.saoCongViec}</span>
+              <span>({item.congViec.danhGia})</span>
             </div>
           </div>
           <footer>
@@ -65,7 +66,7 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet}) {
                         <button><HeartOutlined/></button>
                     </span>
                 </div>
-               <a  className={cx("price")}><small>Starting at</small><span>$100</span></a>
+               <a  className={cx("price")}><small>Starting at</small><span>${item.congViec.giaTien}</span></a>
 
           </footer>
         </div>
