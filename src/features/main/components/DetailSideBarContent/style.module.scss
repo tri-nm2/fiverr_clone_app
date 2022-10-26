@@ -8,7 +8,9 @@
 .package-tab-wrapper.scroll-fixed{
   position: fixed;
   top: 80px;
-  
+}
+.package-tab-wrapper.scroll-relative{
+  position: relative;
 }
 .nav-tabs {
   display: flex;

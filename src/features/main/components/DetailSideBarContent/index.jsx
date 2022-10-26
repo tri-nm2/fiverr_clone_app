@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { DownOutlined } from "@ant-design/icons";
@@ -7,14 +7,15 @@ import { useScrollPosition } from "common/hooks/scrollPostion";
 
 let cx = classNames.bind(styles);
 
-function DetailSideBarContent({congViec}) {
+function DetailSideBarContent({congViec, heightSideBar}) {
     const [check, setCheck] = useState(1);
     const scrollPosition = useScrollPosition();
-    const handlescroll = scrollPosition > 120 ? "scroll-fixed" : "";
+    const handlescroll = scrollPosition > 120 ? "scroll-fixed" : "scroll-relative";
     function handleCheck(index){
         setCheck(index);
     }
-
+    useEffect(() => {
+    },[])
   return (
     <div>
       <div className={cx("package-tab-wrapper",`${handlescroll}`)}>

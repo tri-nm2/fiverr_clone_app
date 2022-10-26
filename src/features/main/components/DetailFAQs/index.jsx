@@ -17,7 +17,7 @@ function DetailFAQs(props) {
         }
     }
     return (
-        <div id="faq">
+        <section id="faq">
             <h2 className={cx("section-tilte")}>FAQ</h2>
             <div className={cx("faq-group")}>
                 <article className={open === 1 ? cx("faq-item","show") : cx("faq-item")}>
@@ -63,7 +63,7 @@ function DetailFAQs(props) {
                     </div>
                 </article>
             </div>
-        </div>
+        </section>
     );
 }
 

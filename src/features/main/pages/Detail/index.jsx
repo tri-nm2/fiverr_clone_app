@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import { Carousel } from "react-responsive-carousel";
 import { Link, useParams } from "react-router-dom";
@@ -24,30 +24,66 @@ import DetailSideBarContent from "features/main/components/DetailSideBarContent"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDataComment, fetchDataDetail, fetchDataUser } from "./action";
 import _ from "lodash";
+import { useWindowSize } from "common/hooks/windowSize";
 
 let cx = classNames.bind(styles);
 
 function Detail(props) {
   const scrollPosition = useScrollPosition();
+  const windowSize = useWindowSize();
+  const [activeLink, setActiveLink] = useState("overview");
+  const [heightSideBar, setHeightSideBar] = useState();
   const { tenLoaiCongViec, tenChitiet, id } = useParams();
-  const handlescroll = scrollPosition > 120 ? "scroll-wrapper" : "";
+  const [jobtype, setjobtype] = useState();
   const menuData = useSelector((state) => state.main.menuData);
   const detailData = useSelector((state) => state.detail.detailData);
-  const detail = detailData[0];
   const userData = useSelector((state) => state.detail.userData);
 
+  const detail = detailData[0];
   const user = userData[0];
+  const handlescroll =
+  scrollPosition > 120 ? "scroll-wrapper" : "";
   const dispatch = useDispatch();
-  function getJobType(){
-    const jobtype =  menuData.findIndex( item => item.tenLoaiCongViec === tenLoaiCongViec);
-    return menuData[jobtype].id;
+
+  
+  function getJobType() {
+    const jobtypeindex = menuData.findIndex(
+      (item) => item.tenLoaiCongViec === tenLoaiCongViec
+    );
+    setjobtype(menuData[jobtypeindex].id)
+   
   }
+
   useEffect(() => {
     dispatch(fetchDataDetail(id));
     dispatch(fetchDataUser(detail.tenNguoiTao));
-    // dispatch(fetchDataComment(id));
+    dispatch(fetchDataComment(id));
     getJobType();
   }, []);
+  useEffect(() => {
+    const sectionAll = document.querySelectorAll("section[id]");
+    window.addEventListener("scroll", () => {
+      const srollY = window.pageYOffset;
+      sectionAll.forEach((current) => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 150;
+        const sectionId = current.id;
+        if (srollY > sectionTop && srollY <= sectionTop + sectionHeight) {
+          setActiveLink(sectionId);
+          return;
+        }
+      });
+    });
+    
+  }, []);
+  function getHeightSideBar() {
+   
+  }
+  useEffect(() =>{
+    const wrapper = document.querySelector(`#side-bar`);
+    setHeightSideBar(wrapper.offsetHeight);
+   
+  },[]);
   const images = [
     {
       original: detail.congViec.hinhAnh,
@@ -56,26 +92,56 @@ function Detail(props) {
   ];
 
   return (
+
     <div className="layout-row">
+          <div>{heightSideBar}</div>  
       <div className={cx("top-nav", `${handlescroll}`)}>
         <nav>
           <ul>
-            <li className={cx("nav-overview", "selected")}>
+            <li
+              className={
+                activeLink === "overview"
+                  ? cx("nav-overview", "activeLink")
+                  : cx("nav-overview")
+              }
+            >
               <a href="#overview">Overview</a>
             </li>
-            <li className={cx("nav-description")}>
+            <li
+              className={
+                activeLink === "description"
+                  ? cx("nav-description", "activeLink")
+                  : cx("nav-description")
+              }
+            >
               <a href="#description">Description</a>
             </li>
-            <li className={cx("nav-about-seller")}>
+            <li
+              className={
+                activeLink === "about-seller"
+                  ? cx("nav-about-seller", "activeLink")
+                  : cx("nav-about-seller")
+              }
+            >
               <a href="#about-seller">About the seller</a>
             </li>
-            <li className={cx("nav-recommendations")}>
-              <a href="#recommendations">Recommendations</a>
-            </li>
-            <li className={cx("nav-faq")}>
+
+            <li
+              className={
+                activeLink === "faq"
+                  ? cx("nav-faq", "activeLink")
+                  : cx("nav-faq")
+              }
+            >
               <a href="#faq">FAQ</a>
             </li>
-            <li className={cx("nav-review")}>
+            <li
+              className={
+                activeLink === "review"
+                  ? cx("nav-review", "activeLink")
+                  : cx("nav-review")
+              }
+            >
               <a href="#review">Reviews</a>
             </li>
           </ul>
@@ -138,116 +204,117 @@ function Detail(props) {
       </div>
       <div className={cx("gig-page")}>
         <div className={cx("main")}>
-          <nav>
-            <ul className={cx("breadcrumbs")}>
-              <li>
-                <Link to={`/jobtype/${getJobType()}`}>
-                  {tenLoaiCongViec}
-                </Link>
-                <span>
-                  <svg
-                    width="8"
-                    height="16"
-                    viewBox="0 0 8 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M0.772126 1.19065L0.153407 1.80934C0.00696973 1.95578 0.00696973 2.19322 0.153407 2.33969L5.80025 8L0.153407 13.6603C0.00696973 13.8067 0.00696973 14.0442 0.153407 14.1907L0.772126 14.8094C0.918563 14.9558 1.156 14.9558 1.30247 14.8094L7.84666 8.26519C7.99309 8.11875 7.99309 7.88131 7.84666 7.73484L1.30247 1.19065C1.156 1.04419 0.918563 1.04419 0.772126 1.19065Z"></path>
-                  </svg>
-                </span>
-              </li>
-              <li>
-                <Link to={`/categories/${tenLoaiCongViec}/${tenChitiet}`}>
-                  {tenChitiet}
-                </Link>
-                <span>
-                  <svg
-                    width="8"
-                    height="16"
-                    viewBox="0 0 8 16"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M0.772126 1.19065L0.153407 1.80934C0.00696973 1.95578 0.00696973 2.19322 0.153407 2.33969L5.80025 8L0.153407 13.6603C0.00696973 13.8067 0.00696973 14.0442 0.153407 14.1907L0.772126 14.8094C0.918563 14.9558 1.156 14.9558 1.30247 14.8094L7.84666 8.26519C7.99309 8.11875 7.99309 7.88131 7.84666 7.73484L1.30247 1.19065C1.156 1.04419 0.918563 1.04419 0.772126 1.19065Z"></path>
-                  </svg>
-                </span>
-              </li>
-            </ul>
-          </nav>
-          <h1>{detail.congViec.tenCongViec}</h1>
-          <div id="overview" className={cx("seller-overview")}>
-            <div className={cx("seller-image")}>
-              <figure>
-                <figcaption>e</figcaption>
-                <img src={detail.avatar} alt="encodersltd" />
-              </figure>
-            </div>
-            <div className={cx("seller-content")}>
-              <div className={cx("seller-name")}>{detail.tenNguoiTao}</div>
-              <div className={cx("seller-level")}>
-                <span>Level 1 Seller</span>
+          <section id="overview">
+            <nav>
+              <ul className={cx("breadcrumbs")}>
+                <li>
+                  <Link to={`/jobtype/${jobtype}`}>{tenLoaiCongViec}</Link>
+                  <span>
+                    <svg
+                      width="8"
+                      height="16"
+                      viewBox="0 0 8 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0.772126 1.19065L0.153407 1.80934C0.00696973 1.95578 0.00696973 2.19322 0.153407 2.33969L5.80025 8L0.153407 13.6603C0.00696973 13.8067 0.00696973 14.0442 0.153407 14.1907L0.772126 14.8094C0.918563 14.9558 1.156 14.9558 1.30247 14.8094L7.84666 8.26519C7.99309 8.11875 7.99309 7.88131 7.84666 7.73484L1.30247 1.19065C1.156 1.04419 0.918563 1.04419 0.772126 1.19065Z"></path>
+                    </svg>
+                  </span>
+                </li>
+                <li>
+                  <Link to={`/categories/${tenLoaiCongViec}/${tenChitiet}`}>
+                    {tenChitiet}
+                  </Link>
+                  <span>
+                    <svg
+                      width="8"
+                      height="16"
+                      viewBox="0 0 8 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0.772126 1.19065L0.153407 1.80934C0.00696973 1.95578 0.00696973 2.19322 0.153407 2.33969L5.80025 8L0.153407 13.6603C0.00696973 13.8067 0.00696973 14.0442 0.153407 14.1907L0.772126 14.8094C0.918563 14.9558 1.156 14.9558 1.30247 14.8094L7.84666 8.26519C7.99309 8.11875 7.99309 7.88131 7.84666 7.73484L1.30247 1.19065C1.156 1.04419 0.918563 1.04419 0.772126 1.19065Z"></path>
+                    </svg>
+                  </span>
+                </li>
+              </ul>
+            </nav>
+            <h1>{detail.congViec.tenCongViec}</h1>
+            <div className={cx("seller-overview")}>
+              <div></div>
+              <div className={cx("seller-image")}>
+                <figure>
+                  <figcaption>e</figcaption>
+                  <img src={detail.avatar} alt="encodersltd" />
+                </figure>
               </div>
-              <div className={cx("seller-rating")}>
-                <div className={cx("start")}>
-                  <span className={cx("orc-start")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1792 1792"
-                      width={15}
-                      height={15}
-                    >
-                      <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
-                    </svg>
-                  </span>
-                  <span className={cx("orc-start")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1792 1792"
-                      width={15}
-                      height={15}
-                    >
-                      <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
-                    </svg>
-                  </span>
-                  <span className={cx("orc-start")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1792 1792"
-                      width={15}
-                      height={15}
-                    >
-                      <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
-                    </svg>
-                  </span>
-                  <span className={cx("orc-start")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1792 1792"
-                      width={15}
-                      height={15}
-                    >
-                      <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
-                    </svg>
-                  </span>
-                  <span className={cx("orc-start")}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1792 1792"
-                      width={15}
-                      height={15}
-                    >
-                      <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
-                    </svg>
+              <div className={cx("seller-content")}>
+                <div className={cx("seller-name")}>{detail.tenNguoiTao}</div>
+                <div className={cx("seller-level")}>
+                  <span>Level 1 Seller</span>
+                </div>
+                <div className={cx("seller-rating")}>
+                  <div className={cx("start")}>
+                    <span className={cx("orc-start")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1792 1792"
+                        width={15}
+                        height={15}
+                      >
+                        <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
+                      </svg>
+                    </span>
+                    <span className={cx("orc-start")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1792 1792"
+                        width={15}
+                        height={15}
+                      >
+                        <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
+                      </svg>
+                    </span>
+                    <span className={cx("orc-start")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1792 1792"
+                        width={15}
+                        height={15}
+                      >
+                        <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
+                      </svg>
+                    </span>
+                    <span className={cx("orc-start")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1792 1792"
+                        width={15}
+                        height={15}
+                      >
+                        <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
+                      </svg>
+                    </span>
+                    <span className={cx("orc-start")}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1792 1792"
+                        width={15}
+                        height={15}
+                      >
+                        <path d="M1728 647q0 22-26 48l-363 354 86 500q1 7 1 20 0 21-10.5 35.5t-30.5 14.5q-19 0-40-12l-449-236-449 236q-22 12-40 12-21 0-31.5-14.5t-10.5-35.5q0-6 2-20l86-500-364-354q-25-27-25-48 0-37 56-46l502-73 225-455q19-41 49-41t49 41l225 455 502 73q56 9 56 46z" />
+                      </svg>
+                    </span>
+                  </div>
+                  <b className={cx("rating-score")}>
+                    {detail.congViec.saoCongViec}
+                  </b>
+                  <span className={cx("rating-count")}>
+                    ({detail.congViec.danhGia})
                   </span>
                 </div>
-                <b className={cx("rating-score")}>
-                  {detail.congViec.saoCongViec}
-                </b>
-                <span className={cx("rating-count")}>
-                  ({detail.congViec.danhGia})
-                </span>
+                <div className={cx("seller-order")}>1 Order in Queue</div>
               </div>
-              <div className={cx("seller-order")}>1 Order in Queue</div>
             </div>
-          </div>
+          </section>
           <section className={cx("gig-gallery-component")}>
             <ImageGallery items={images} showPlayButton={false} />
           </section>
@@ -447,7 +514,7 @@ function Detail(props) {
               </Carousel>
             </div>
           </section>
-          <div id="description" className={cx("gig-description")}>
+          <section id="description" className={cx("gig-description")}>
             <header>
               <h2 className={cx("section-title")}>About This Gig</h2>
             </header>
@@ -544,9 +611,9 @@ function Detail(props) {
                 </ul>
               </li>
             </ul>
-          </div>
+          </section>
           <h2 className={cx("section-title")}>About The Seller</h2>
-          <div id="about-seller" className={cx("profile-card")}>
+          <section id="about-seller" className={cx("profile-card")}>
             <div className={cx("seller-card")}>
               <div className={cx("profile-info")}>
                 <div className={cx("profile-image")}>
@@ -660,14 +727,14 @@ function Detail(props) {
                 <button className={cx("read-more")}>+ See More</button>
               </article> */}
             </div>
-          </div>
+          </section>
           <DetailFAQs />
           <DetailReviewsPackage />
           <DetailReviewsList id={id} />
           <DetailUserComment />
         </div>
-        <div className={cx("side-bar")}>
-          <DetailSideBarContent congViec={detail.congViec} />
+        <div id="side-bar" className={cx("side-bar")}>
+          <DetailSideBarContent congViec={detail.congViec} heightSideBar={heightSideBar}/>
         </div>
       </div>
     </div>

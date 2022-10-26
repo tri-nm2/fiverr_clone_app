@@ -10,6 +10,7 @@ let cx = classNames.bind(styles);
 function DetailReviewsDetailItem({ content }) {
   const userData = useSelector(state => state.detail.userData);
   const user = userData[0];
+  console.log("content",content);
   function handelStar(star){
     result = [];
     for(let i = 0; i < star; i++){
@@ -24,7 +25,7 @@ function DetailReviewsDetailItem({ content }) {
           <div className={cx("profile-info")}>
             <div className={cx("profile-image")}>
               <label className={cx("profile-pict")}>
-                <img src={content.avatar} alt="seller-card" />
+                <img src={content.avatar === "" ? "https://www.clipartmax.com/png/middle/437-4374952_no-avatar-male-female.png": content.avatar} alt="seller-card" />
               </label>
             </div>
             <div className={cx("profile-label")}>

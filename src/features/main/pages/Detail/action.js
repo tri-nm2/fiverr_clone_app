@@ -34,7 +34,6 @@ export const fetchDataUser= createAsyncThunk('user/addUserData', async (name) =>
         })
        
         return result.data.content;
-        
     }catch(err){
         console.log(err);
     }
@@ -44,12 +43,17 @@ export const fetchDataComment= createAsyncThunk('comment/addDataComment', async 
         const result = await instace.request({
             url: "/api/binh-luan/lay-binh-luan-theo-cong-viec/"+id,
         })
-        if(result.data.statusCode === 200){
-            return result.data.content;
-        }
+        return [{
+            data : result.data.content,
+            status: true,
+            message: "Lay du lieu thanh cong",
+        }];
+        
         
     }catch(err){
-        
-        console.log(err);
+        return [{
+            status: false,
+            message: "Khong doc duoc du lieu Binh luan tu server"
+        }]
     }
 })

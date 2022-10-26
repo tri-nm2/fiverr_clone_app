@@ -80,14 +80,17 @@ const detailSlice = createSlice({
               }
         ],
         commentData: [
-            {
+           {
+            data : [{
                 "ngayBinhLuan": "string",
                 "noiDung": "string",
                 "saoBinhLuan": 0,
                 "tenNguoiBinhLuan": "string",
                 "avatar": "string"
-            },
-        
+            }],
+            status: true,
+            message: "Lay du lieu thanh cong",
+           }
         ]
     },
     reducers:{
@@ -100,10 +103,22 @@ const detailSlice = createSlice({
             state.status = 'loading';
         }).addCase(fetchDataDetail.fulfilled, (state, action) => {
             state.detailData = action.payload;
+            state.status = 'idle';
         }).addCase(fetchDataUser.fulfilled, (state, action)=>{
             state.userData = action.payload;
+            state.status = 'idle';
         }).addCase(fetchDataComment.fulfilled, (state, action) =>{
-            state.commentData = action.payload;
+            state.status = 'idle';
+            if(action.payload[0].status === true){
+                state.commentData[0].data = action.payload[0].data;
+                state.commentData[0].status = action.payload[0].status;
+                state.commentData[0].message = action.payload[0].message;
+            }else{
+               
+                state.commentData[0].status = action.payload[0].status;
+                state.commentData[0].message = action.payload[0].message;
+            }
+            
         })
     }
 });

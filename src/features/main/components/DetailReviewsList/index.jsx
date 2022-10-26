@@ -8,9 +8,17 @@ let cx = classNames.bind(styles);
 
 function DetailReviewsList({ id }) {
   const commentData = useSelector((state) => state.detail.commentData);
+  function getCommentList(){
+    const status = commentData[0].status;
+    if(status){
+      const data = commentData[0].data;
+      return data.map((item,index) => <DetailReviewsDetailItem key={index} content={item}/>)
+    }
+  return <></>
+  }
   return (
     <div className={cx("review-list")}>
-      {commentData.map((item, index) => <DetailReviewsDetailItem key={index} content={item} />)}
+      {getCommentList()}
     </div>
   );
 }

@@ -16,7 +16,7 @@ function DetailReviewsPackage(props) {
     setCheck(index);
   }
   return (
-    <div id="review">
+    <section id="review">
       <header className={cx("reviews-header")}>
         <div className={cx("detail")}>
           <h2>
@@ -288,7 +288,7 @@ function DetailReviewsPackage(props) {
             </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
