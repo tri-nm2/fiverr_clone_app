@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import React from "react";
-import { fetchUserInfoAction } from "features/authentication/action";
+import { fetchUserInfoAction, fetchUserRentJob } from "features/authentication/action";
 import { fetchMenuDataAction } from "features/main/action";
 import { useDispatch } from "react-redux";
 
@@ -36,6 +36,7 @@ function App() {
   useEffect(() => {
     if (userId) {
       dispatch(fetchUserInfoAction(userId));
+      dispatch(fetchUserRentJob());
     }
     dispatch(fetchMenuDataAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps

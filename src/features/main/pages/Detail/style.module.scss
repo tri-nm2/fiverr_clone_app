@@ -527,6 +527,7 @@ nav {
 }
 .side-bar{
   width: 40%;
+  position: relative;
 }
 .side-bar.mobile{
   width: 100%;
@@ -556,7 +557,7 @@ nav {
 
 /*======================= MEDIUM DEVICES DESKTOP =======================*/
 @media screen and  (max-width: 1023.98px) and (min-width: 768px) {
-
+  
 }
 /*======================= SMALL DEVICES DESKTOP =======================*/
 @media screen and  (max-width: 767.98px ) and (min-width: 640px) {

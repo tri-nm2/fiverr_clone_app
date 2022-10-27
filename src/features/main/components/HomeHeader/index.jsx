@@ -122,7 +122,7 @@ function HomeHeader() {
         const childList = group.dsChiTietLoai.map((detail) => {
           return {
             key: detail.id,
-            label: <Link to="/">{detail.tenChiTiet}</Link>,
+            label: <Link to={`/categories/jobtype/${categories.id}/${categories.tenLoaiCongViec}/${detail.tenChiTiet}`}>{detail.tenChiTiet}</Link>,
           };
         });
 

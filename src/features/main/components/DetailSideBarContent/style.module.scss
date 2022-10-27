@@ -3,11 +3,15 @@
     margin: 0;
     width: 414px;
     background-color: #fff;
-    position: relative;
+    // position: relative;
 }
 .package-tab-wrapper.scroll-fixed{
   position: fixed;
   top: 80px;
+}
+.package-tab-wrapper.scroll-bottom{
+  position: absolute;
+  bottom: 0;
 }
 .package-tab-wrapper.mobile{
   position: relative;

@@ -19,7 +19,7 @@ function PageLoginHeader() {
       group.dsChiTietLoai.forEach((detail) => {
         childList.push({
           key: "child" + detail.id,
-          label: <Link to="/">{detail.tenChiTiet}</Link>,
+          label: <Link to={`/categories/jobtype/${categories.id}/${categories.tenLoaiCongViec}/${detail.tenChiTiet}`}>{detail.tenChiTiet}</Link>,
         });
       });
     });
@@ -164,6 +164,7 @@ function PageLoginHeader() {
   //Events
   const handleLogout = () => {
     dispatch(authenReducer.actions.clearUserInfo());
+    dispatch(authenReducer.actions.clearUserRentJob());
     localStorage.removeItem("id");
     localStorage.removeItem("token");
     if (location.pathname === "/profile") {
@@ -179,7 +180,7 @@ function PageLoginHeader() {
         const childList = group.dsChiTietLoai.map((detail) => {
           return {
             key: detail.id,
-            label: <Link to="/">{detail.tenChiTiet}</Link>,
+            label: <Link to={`/categories/jobtype/${categories.id}/${categories.tenLoaiCongViec}/${detail.tenChiTiet}`}>{detail.tenChiTiet}</Link>,
           };
         });
 

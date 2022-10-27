@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDataComment, fetchDataDetail, fetchDataUser } from "./action";
 import _ from "lodash";
 import { useWindowSize } from "common/hooks/windowSize";
+import { current } from "@reduxjs/toolkit";
 
 let cx = classNames.bind(styles);
 
@@ -52,29 +53,25 @@ function Detail(props) {
     dispatch(fetchDataUser(detail.tenNguoiTao));
   }, [detail.tenNguoiTao]);
   useEffect(() => {
-    if (windowSize.width >= 1000) {
-      const sectionAll = document.querySelectorAll("section[id]");
-      window.addEventListener("scroll", () => {
-        const srollY = window.pageYOffset;
-        sectionAll.forEach((current) => {
-          const sectionHeight = current.offsetHeight;
-          const sectionTop = current.offsetTop - 150;
-          const sectionId = current.id;
-          if (srollY > sectionTop && srollY <= sectionTop + sectionHeight) {
-            setActiveLink(sectionId);
-            return;
-          }
-        });
+    const sectionAll = document.querySelectorAll("section[id]");
+    window.addEventListener("scroll", () => {
+      const srollY = window.pageYOffset;
+      sectionAll.forEach((current) => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 150;
+        const sectionId = current.id;
+        if (srollY > sectionTop && srollY <= sectionTop + sectionHeight) {
+          setActiveLink(sectionId);
+          return;
+        }
       });
-    }
+    });
   }, []);
 
   useEffect(() => {
-    if (windowSize.width >= 1000) {
-      const wrapper = document.querySelector(`#side-bar`);
-      setHeightSideBar(wrapper.offsetHeight);
-    }
-  }, []);
+      const wrapper = document.querySelectorAll("div#side-bar");
+      wrapper.forEach(current => setHeightSideBar(current.offsetHeight));
+  });
   const images = [
     {
       original: detail.congViec.hinhAnh,
@@ -742,7 +739,7 @@ function Detail(props) {
         </div>
         {windowSize.width >= 1000 ? (
           <div id="side-bar" className={cx("side-bar")}>
-            <DetailSideBarContent congViec={detail.congViec} />
+            <DetailSideBarContent congViec={detail.congViec} heightSideBar={heightSideBar} />
           </div>
         ) : (
           <></>

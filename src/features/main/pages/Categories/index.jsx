@@ -77,7 +77,7 @@ function Categories(props) {
               </span>
             </li>
             <li>
-              <Link to={`/jobtype/${menuData[jobMenu].id}`}>{tenLoaiCongViec}</Link>
+              <Link to={`/jobtype/${jobid}`}>{tenLoaiCongViec}</Link>
               <span>
                 <svg
                   width="8"

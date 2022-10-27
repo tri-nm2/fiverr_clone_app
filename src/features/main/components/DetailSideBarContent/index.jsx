@@ -8,23 +8,39 @@ import { useWindowSize } from "common/hooks/windowSize";
 
 let cx = classNames.bind(styles);
 
-function DetailSideBarContent({congViec}) {
+function DetailSideBarContent({congViec, heightSideBar}) {
     const [check, setCheck] = useState(1);
     const scrollPosition = useScrollPosition();
+    const [scroll, setscroll] = useState("");
     const windowSize = useWindowSize();
-    let handlescroll = scrollPosition > 120 ? "scroll-fixed" : "scroll-relative";
+    let handlescroll = "";
     if(windowSize.width <= 1000 ){
-       handlescroll = "mobile";
+      //  setscroll("mobile");
+      handlescroll = "mobile";
     }
-    
+    console.log("height",heightSideBar)
     function handleCheck(index){
         setCheck(index);
     }
     useEffect(() => {
-    },[])
+      if(heightSideBar != undefined){
+        window.addEventListener("scroll", () =>{
+          const scrollY = window.pageYOffset;
+          console.log(scrollY);
+          if(scrollY >= 120 && scrollY <= heightSideBar - 300){
+              setscroll("scroll-fixed");
+          }else if(scrollY >= heightSideBar - 300){
+              setscroll("scroll-bottom");
+          }else{
+             setscroll("");
+          }
+        })
+      }
+     
+    })
   return (
     <div>
-      <div className={cx("package-tab-wrapper",`${handlescroll}`)}>
+      <div className={cx("package-tab-wrapper",`${scroll}`,`${handlescroll}`)}>
         <div className={cx("nav-tabs")}>
             <button className={check === 1 ? cx("btn-tab-wrapper","checked") : cx("btn-tab-wrapper")} onClick={() =>{handleCheck(1)}}>
                 <span>Basic</span>

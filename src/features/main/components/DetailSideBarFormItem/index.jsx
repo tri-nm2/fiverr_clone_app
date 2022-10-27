@@ -1,17 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { DownOutlined } from "@ant-design/icons";
+import instace from "api/instance";
+import { useDispatch } from "react-redux";
+import { fetchUserInfoAction, fetchUserRentJob } from "features/authentication/action";
+import { fetchDataDetail } from "features/main/pages/Detail/action";
+import { Modal } from "antd";
 
 
 let cx = classNames.bind(styles);
 
 function DetailSideBarFormItem({data,check,congViec}) {
+  const userId = localStorage.getItem("id");
+  const dispatch = useDispatch();
   const show = check ? "show": "";
+  console.log(congViec);
+  function handleSubmit(e){
+    e.preventDefault();
+    if(userId){
+        let userBook = {
+          "id": 0,
+          "maCongViec": congViec.id,
+          "maNguoiThue": userId,
+          "ngayThue": "12/12/12",
+          "hoanThanh": true
+        }
+        bookJob(userBook);
+    }else{
+      alert("Chưa đăng nhập");
+     
+    }
+    
+  }
+  //Call Api booking job
+  const bookJob = async (userBook) => {
+    try {
+      const reponse = await instace.request({
+        url: "/api/thue-cong-viec",
+        method: "POST",
+        data: userBook,
+      });
+      if(reponse.status === 201){
+        showSuccess("Thuê thành công");
+        dispatch(fetchUserRentJob());
+      }
+      
+    } catch (error) {
+        console.log(error);
+    }
+  }
+  //Call modal
+  //Message Boxes
+  const showSuccess = (message) => {
+    Modal.success({
+      content: <span>{message}</span>,
+      onOk() {},
+    });
+  };
+  useEffect(()=>{
+    // dispatch(fetchUserInfoAction(1293));
+  },[]);
+ 
   return (
     <div>
       <div className={cx("form-wrapper",`${show}`)}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className={cx("form-content")}>
             <header>
               <h3>
@@ -95,7 +149,7 @@ function DetailSideBarFormItem({data,check,congViec}) {
               </div>
             </article>
             <footer className={cx("form-footer")}>
-            <button className={cx("btn-continue")}>
+            <button className={cx("btn-continue")} type="submit">
               <span>Continue</span>
               <span> ${congViec.giaTien}</span>
             </button>

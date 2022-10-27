@@ -3,15 +3,12 @@ import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { HeartOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItemMobile({
-  tenLoaiCongViec,
-  tenChitiet,
-  item,
-  jobid,
-}) {
+function UserRentJobItem({item}) {
+  
   return (
     <div className={cx("card-item-layout")}>
       <div className={cx("item-wrapper")}>
@@ -21,7 +18,7 @@ function CategoriesPackageItemMobile({
               <img src={item.congViec.hinhAnh} />
             </div>
             <div className={cx("collect-package")}>
-              <span>
+              {/* <span>
                 <button>
                   <span
                     className={cx("heart-icon")}
@@ -38,18 +35,20 @@ function CategoriesPackageItemMobile({
                     </svg>
                   </span>
                 </button>
-              </span>
+              </span> */}
             </div>
           </a>
           <div className={cx("seller-info")}>
             <h3>
               <Link
-                to={`/detail/jobtype/${jobid}/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}
+                to="/"
               >
                 {item.congViec.tenCongViec}
               </Link>
             </h3>
+            
             <div className={cx("content-info")}>
+              <p>{item.congViec.moTaNgan}</p>
               <div className={cx("rating-info")}>
                 <span className={cx("gig-rating")}>
                   <svg
@@ -72,7 +71,7 @@ function CategoriesPackageItemMobile({
             </div>
           </div>
         </header>
-        <footer>
+        {/* <footer>
           <div className={cx("seller-info")}>
             <div className={cx("inner-wrapper")}>
               <span className={cx("seller-image")}>
@@ -107,10 +106,10 @@ function CategoriesPackageItemMobile({
               <span>${item.congViec.giaTien}</span>
             </a>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </div>
   );
 }
 
-export default CategoriesPackageItemMobile;
+export default UserRentJobItem;
