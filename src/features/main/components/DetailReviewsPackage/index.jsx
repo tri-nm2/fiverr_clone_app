@@ -117,7 +117,7 @@ function DetailReviewsPackage(props) {
       </header>
       <div className={cx("filters-section")}>
         <div className={cx("breakdown-wrapper")}>
-          <div>
+          <div className={cx("breakdown-left")}>
             <table className={cx("start-counters")}>
               <tbody>
                 <tr>
@@ -198,7 +198,7 @@ function DetailReviewsPackage(props) {
               </tbody>
             </table>
           </div>
-          <div>
+          <div className={cx("breakdown-right")}>
             <div className={cx("ranking")}>
              <h6 className={cx("ranking-title")}>Rating Breakdown</h6>
 

@@ -11,7 +11,7 @@ function JobTypeGroupItem(props) {
     const tag = detail?.dsChiTietLoai.map((item) => {
       return (
         <div key={item.id} className={Style.innerLink}>
-          <Link to={`/categories/${groupList[0].tenLoaiCongViec}/${item.tenChiTiet}`}>{item.tenChiTiet}</Link>
+          <Link to={`/categories/jobType/${groupList[0].id}/${groupList[0].tenLoaiCongViec}/${item.tenChiTiet}`}>{item.tenChiTiet}</Link>
           <svg
             width={16}
             height={16}

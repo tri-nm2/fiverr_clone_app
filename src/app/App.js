@@ -52,8 +52,8 @@ function App() {
             <PageTemplate path="/signup" Component={SignUp} />
             <PageTemplate path="/profile" Component={UserProfile} />
             <PageTemplate path="/jobtype/:id" Component={JobType} />
-            <PageTemplate path="/categories/:tenLoaiCongViec/:tenChitiet" Component={Categories} />
-            <PageTemplate path="/detail/:tenLoaiCongViec/:tenChitiet/:id" Component={Detail} />
+            <PageTemplate path="/categories/jobtype/:jobid/:tenLoaiCongViec/:tenChitiet" Component={Categories} />
+            <PageTemplate path="/detail/jobtype/:jobid/:tenLoaiCongViec/:tenChitiet/:id" Component={Detail} />
           </Switch>
         </Suspense>
       </div>

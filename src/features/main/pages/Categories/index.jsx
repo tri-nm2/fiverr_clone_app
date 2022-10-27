@@ -22,7 +22,7 @@ import { fetchCategoriesData } from "./action";
 let cx = classNames.bind(styles);
 
 function Categories(props) {
-  const { tenLoaiCongViec, tenChitiet } = useParams();
+  const { jobid, tenLoaiCongViec, tenChitiet } = useParams();
   const menuData = useSelector((state) => state.main.menuData);
   const categoriesData = useSelector(
     (state) => state.categories.categoriesData
@@ -114,6 +114,7 @@ function Categories(props) {
         <CategoriesFilterSelectedMobile />
       )}
       <CategoriesListPackage
+        jobid = {jobid}
         categoriesData={categoriesData}
         tenLoaiCongViec={tenLoaiCongViec}
         tenChitiet={tenChitiet}

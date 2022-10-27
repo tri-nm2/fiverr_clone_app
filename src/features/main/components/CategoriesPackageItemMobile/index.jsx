@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItemMobile({tenLoaiCongViec,tenChitiet,item}) {
+function CategoriesPackageItemMobile({tenLoaiCongViec,tenChitiet,item, jobid}) {
   return (
     <div className={cx("card-item-layout")}>
       <div className={cx("item-wrapper")}>
@@ -24,7 +24,7 @@ function CategoriesPackageItemMobile({tenLoaiCongViec,tenChitiet,item}) {
           </div>
         </a>
         <div className={cx("seller-info")}>
-        <h3><Link to={`/detail/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
+        <h3><Link to={`/detail/jobtype/${jobid}/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
           <div className={cx("content-info")}>
             <div className={cx("rating-info")}>
               <span className={cx("gig-rating")}>

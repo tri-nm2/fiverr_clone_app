@@ -528,6 +528,15 @@ nav {
 .side-bar{
   width: 40%;
 }
+.side-bar.mobile{
+  width: 100%;
+  margin-bottom: 32px;
+  margin-top: 5px;
+}
+.main.main-mobile{
+  width: 100%;
+  margin: 0;
+}
 /*======================= LAGRE DEVICES =======================*/
 
 @media screen and (max-width: 1280px) and (min-width: 1024px) {

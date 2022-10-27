@@ -33,6 +33,8 @@ export const fetchDataUser= createAsyncThunk('user/addUserData', async (name) =>
             url: "/api/users/search/" + name,
         })
        
+        console.log(result.data.content);
+       
         return result.data.content;
     }catch(err){
         console.log(err);
@@ -43,6 +45,7 @@ export const fetchDataComment= createAsyncThunk('comment/addDataComment', async 
         const result = await instace.request({
             url: "/api/binh-luan/lay-binh-luan-theo-cong-viec/"+id,
         })
+        
         return [{
             data : result.data.content,
             status: true,

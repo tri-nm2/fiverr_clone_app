@@ -33,7 +33,7 @@ function Detail(props) {
   const windowSize = useWindowSize();
   const [activeLink, setActiveLink] = useState("overview");
   const [heightSideBar, setHeightSideBar] = useState();
-  const { tenLoaiCongViec, tenChitiet, id } = useParams();
+  const { jobid, tenLoaiCongViec, tenChitiet, id } = useParams();
   const [jobtype, setjobtype] = useState();
   const menuData = useSelector((state) => state.main.menuData);
   const detailData = useSelector((state) => state.detail.detailData);
@@ -41,49 +41,40 @@ function Detail(props) {
 
   const detail = detailData[0];
   const user = userData[0];
-  const handlescroll =
-  scrollPosition > 120 ? "scroll-wrapper" : "";
+  const handlescroll = scrollPosition > 120 ? "scroll-wrapper" : "";
   const dispatch = useDispatch();
-
-  
-  function getJobType() {
-    const jobtypeindex = menuData.findIndex(
-      (item) => item.tenLoaiCongViec === tenLoaiCongViec
-    );
-    setjobtype(menuData[jobtypeindex].id)
-   
-  }
 
   useEffect(() => {
     dispatch(fetchDataDetail(id));
-    dispatch(fetchDataUser(detail.tenNguoiTao));
     dispatch(fetchDataComment(id));
-    getJobType();
   }, []);
   useEffect(() => {
-    const sectionAll = document.querySelectorAll("section[id]");
-    window.addEventListener("scroll", () => {
-      const srollY = window.pageYOffset;
-      sectionAll.forEach((current) => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 150;
-        const sectionId = current.id;
-        if (srollY > sectionTop && srollY <= sectionTop + sectionHeight) {
-          setActiveLink(sectionId);
-          return;
-        }
+    dispatch(fetchDataUser(detail.tenNguoiTao));
+  }, [detail.tenNguoiTao]);
+  useEffect(() => {
+    if (windowSize.width >= 1000) {
+      const sectionAll = document.querySelectorAll("section[id]");
+      window.addEventListener("scroll", () => {
+        const srollY = window.pageYOffset;
+        sectionAll.forEach((current) => {
+          const sectionHeight = current.offsetHeight;
+          const sectionTop = current.offsetTop - 150;
+          const sectionId = current.id;
+          if (srollY > sectionTop && srollY <= sectionTop + sectionHeight) {
+            setActiveLink(sectionId);
+            return;
+          }
+        });
       });
-    });
-    
+    }
   }, []);
-  function getHeightSideBar() {
-   
-  }
-  useEffect(() =>{
-    const wrapper = document.querySelector(`#side-bar`);
-    setHeightSideBar(wrapper.offsetHeight);
-   
-  },[]);
+
+  useEffect(() => {
+    if (windowSize.width >= 1000) {
+      const wrapper = document.querySelector(`#side-bar`);
+      setHeightSideBar(wrapper.offsetHeight);
+    }
+  }, []);
   const images = [
     {
       original: detail.congViec.hinhAnh,
@@ -92,123 +83,129 @@ function Detail(props) {
   ];
 
   return (
-
     <div className="layout-row">
-          <div>{heightSideBar}</div>  
-      <div className={cx("top-nav", `${handlescroll}`)}>
-        <nav>
-          <ul>
-            <li
-              className={
-                activeLink === "overview"
-                  ? cx("nav-overview", "activeLink")
-                  : cx("nav-overview")
-              }
-            >
-              <a href="#overview">Overview</a>
-            </li>
-            <li
-              className={
-                activeLink === "description"
-                  ? cx("nav-description", "activeLink")
-                  : cx("nav-description")
-              }
-            >
-              <a href="#description">Description</a>
-            </li>
-            <li
-              className={
-                activeLink === "about-seller"
-                  ? cx("nav-about-seller", "activeLink")
-                  : cx("nav-about-seller")
-              }
-            >
-              <a href="#about-seller">About the seller</a>
-            </li>
+      {windowSize.width >= 1000 ? (
+        <div className={cx("top-nav", `${handlescroll}`)}>
+          <nav>
+            <ul>
+              <li
+                className={
+                  activeLink === "overview"
+                    ? cx("nav-overview", "activeLink")
+                    : cx("nav-overview")
+                }
+              >
+                <a href="#overview">Overview</a>
+              </li>
+              <li
+                className={
+                  activeLink === "description"
+                    ? cx("nav-description", "activeLink")
+                    : cx("nav-description")
+                }
+              >
+                <a href="#description">Description</a>
+              </li>
+              <li
+                className={
+                  activeLink === "about-seller"
+                    ? cx("nav-about-seller", "activeLink")
+                    : cx("nav-about-seller")
+                }
+              >
+                <a href="#about-seller">About the seller</a>
+              </li>
 
-            <li
-              className={
-                activeLink === "faq"
-                  ? cx("nav-faq", "activeLink")
-                  : cx("nav-faq")
-              }
-            >
-              <a href="#faq">FAQ</a>
-            </li>
-            <li
-              className={
-                activeLink === "review"
-                  ? cx("nav-review", "activeLink")
-                  : cx("nav-review")
-              }
-            >
-              <a href="#review">Reviews</a>
-            </li>
-          </ul>
-          <aside className={cx("actions")}>
-            <div className={cx("collect-wrapper")}>
-              <div className={cx("collect-package")}>
-                <div className={cx("collections-wrapper")}>
-                  <span>
-                    <button className={cx("button-wrapper")}>
-                      <MenuOutlined />
-                    </button>
-                  </span>
-                  <div className={cx("collect-container")}>
-                    <ul>
-                      <li>
-                        <button>
-                          <div>
-                            <span>
-                              <HeartFilled />
-                            </span>
-                            <span>My first list</span>
-                          </div>
-                        </button>
-                      </li>
-                    </ul>
-                    <button>
-                      <span>
-                        <PlusOutlined />
-                      </span>
-                      <span>Create list</span>
-                    </button>
+              <li
+                className={
+                  activeLink === "faq"
+                    ? cx("nav-faq", "activeLink")
+                    : cx("nav-faq")
+                }
+              >
+                <a href="#faq">FAQ</a>
+              </li>
+              <li
+                className={
+                  activeLink === "review"
+                    ? cx("nav-review", "activeLink")
+                    : cx("nav-review")
+                }
+              >
+                <a href="#review">Reviews</a>
+              </li>
+            </ul>
+            <aside className={cx("actions")}>
+              <div className={cx("collect-wrapper")}>
+                <div className={cx("collect-package")}>
+                  <div className={cx("collections-wrapper")}>
+                    <span>
+                      <button className={cx("button-wrapper")}>
+                        <MenuOutlined />
+                      </button>
+                    </span>
+                    <div className={cx("collect-container")}>
+                      <ul>
+                        <li>
+                          <button>
+                            <div>
+                              <span>
+                                <HeartFilled />
+                              </span>
+                              <span>My first list</span>
+                            </div>
+                          </button>
+                        </li>
+                      </ul>
+                      <button>
+                        <span>
+                          <PlusOutlined />
+                        </span>
+                        <span>Create list</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div className={cx("collect-like")}>
+                    <span>
+                      <button className={cx("button-wrapper")}>
+                        <HeartFilled />
+                      </button>
+                    </span>
                   </div>
                 </div>
-                <div className={cx("collect-like")}>
-                  <span>
-                    <button className={cx("button-wrapper")}>
-                      <HeartFilled />
-                    </button>
-                  </span>
-                </div>
+                <span className={cx("collect-count")}>12300</span>
               </div>
-              <span className={cx("collect-count")}>12300</span>
-            </div>
-            <div className={cx("report-gig")}>
-              <span>
-                <button className={cx("button-wrapper")}>
-                  <FlagFilled />
-                </button>
-              </span>
-            </div>
-            <div className={cx("sharing-gig")}>
-              <span>
-                <button className={cx("button-wrapper")}>
-                  <ShareAltOutlined />
-                </button>
-              </span>
-            </div>
-          </aside>
-        </nav>
-      </div>
+              <div className={cx("report-gig")}>
+                <span>
+                  <button className={cx("button-wrapper")}>
+                    <FlagFilled />
+                  </button>
+                </span>
+              </div>
+              <div className={cx("sharing-gig")}>
+                <span>
+                  <button className={cx("button-wrapper")}>
+                    <ShareAltOutlined />
+                  </button>
+                </span>
+              </div>
+            </aside>
+          </nav>
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={cx("gig-page")}>
-        <div className={cx("main")}>
+        <div
+          className={
+            windowSize.width >= 1000 ? cx("main") : cx("main", "main-mobile")
+          }
+        >
           <section id="overview">
             <nav>
               <ul className={cx("breadcrumbs")}>
                 <li>
-                  <Link to={`/jobtype/${jobtype}`}>{tenLoaiCongViec}</Link>
+                  <Link to={`/jobtype/${jobid}`}>{tenLoaiCongViec}</Link>
                   <span>
                     <svg
                       width="8"
@@ -221,7 +218,9 @@ function Detail(props) {
                   </span>
                 </li>
                 <li>
-                  <Link to={`/categories/${tenLoaiCongViec}/${tenChitiet}`}>
+                  <Link
+                    to={`/categories/jobtype/${jobid}/${tenLoaiCongViec}/${tenChitiet}`}
+                  >
                     {tenChitiet}
                   </Link>
                   <span>
@@ -315,9 +314,17 @@ function Detail(props) {
               </div>
             </div>
           </section>
+
           <section className={cx("gig-gallery-component")}>
             <ImageGallery items={images} showPlayButton={false} />
           </section>
+          {windowSize.width <= 1000 ? (
+            <div id="side-bar" className={cx("side-bar","mobile")}>
+              <DetailSideBarContent congViec={detail.congViec} />
+            </div>
+          ) : (
+            <></>
+          )}
           <section className={cx("gig-reviews")}>
             <header>
               <h2 className={cx("section-title")}>
@@ -733,9 +740,13 @@ function Detail(props) {
           <DetailReviewsList id={id} />
           <DetailUserComment />
         </div>
-        <div id="side-bar" className={cx("side-bar")}>
-          <DetailSideBarContent congViec={detail.congViec} heightSideBar={heightSideBar}/>
-        </div>
+        {windowSize.width >= 1000 ? (
+          <div id="side-bar" className={cx("side-bar")}>
+            <DetailSideBarContent congViec={detail.congViec} />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

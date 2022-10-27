@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item}) {
+function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item,jobid}) {
 
   return (
     <div className={cx("card-item-layout")}>
@@ -40,7 +40,7 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item}) {
               <span className={cx("seller-name")}><a>{item.tenNguoiTao}</a></span>
             </div>
           </div>
-          <h3><Link to={`/detail/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
+          <h3><Link to={`/detail/jobtype/${jobid}/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
           <div className={cx("content-info")}>
             <div className={cx("rating-info")}>
               <span className={cx("gig-rating")}>

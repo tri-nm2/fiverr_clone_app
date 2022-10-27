@@ -4,13 +4,19 @@ import styles from "./style.module.scss";
 import { DownOutlined } from "@ant-design/icons";
 import DetailSideBarFormItem from "../DetailSideBarFormItem";
 import { useScrollPosition } from "common/hooks/scrollPostion";
+import { useWindowSize } from "common/hooks/windowSize";
 
 let cx = classNames.bind(styles);
 
-function DetailSideBarContent({congViec, heightSideBar}) {
+function DetailSideBarContent({congViec}) {
     const [check, setCheck] = useState(1);
     const scrollPosition = useScrollPosition();
-    const handlescroll = scrollPosition > 120 ? "scroll-fixed" : "scroll-relative";
+    const windowSize = useWindowSize();
+    let handlescroll = scrollPosition > 120 ? "scroll-fixed" : "scroll-relative";
+    if(windowSize.width <= 1000 ){
+       handlescroll = "mobile";
+    }
+    
     function handleCheck(index){
         setCheck(index);
     }
