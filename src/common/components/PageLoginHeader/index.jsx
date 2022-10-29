@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import { Dropdown, Menu, Drawer } from "antd";
 import { Link, NavLink, useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import authenReducer from "features/authentication/authenSlice";
-
+import mainReducer from "features/main/mainSlice";
 function PageLoginHeader() {
   const [open, setOpen] = useState(false);
   const menuData = useSelector((state) => state.main.menuData);
   const [openMenu, setOpenMenu] = useState(false);
   const userInfo = useSelector((state) => state.authen.userInfo);
+  const filterShow = useSelector((state) => state.main.filter);
+  const [filterText, setFilterText] = useState(filterShow.filterText);
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
+  
   const categoriesItems = menuData.map((categories) => {
     let childList = [];
     categories.dsNhomChiTietLoai.forEach((group) => {
@@ -162,6 +165,21 @@ function PageLoginHeader() {
   const avatarName = userInfo.name.slice(0, 1);
 
   //Events
+  const handleChange = (e) => {
+    setFilterText(e.target.value);
+    console.log(e.target.value);
+  }
+  const handleSearch = (e) => {
+    dispatch(mainReducer.actions.addFilterText(filterText));
+ 
+    // dispatch(fetchCategoriesDataWithText(filterText));
+    history.push("/search");
+  }
+  function clearInput(){
+    if(filterShow.filterText === ""){
+      setFilterText("");
+    }
+  }
   const handleLogout = () => {
     dispatch(authenReducer.actions.clearUserInfo());
     dispatch(authenReducer.actions.clearUserRentJob());
@@ -172,6 +190,9 @@ function PageLoginHeader() {
     }
   };
   //Events
+  useEffect(() => {
+    clearInput(); 
+  }, [filterShow.filterText]);
 
   //Other functions
   const renderMenu = () => {
@@ -257,9 +278,11 @@ function PageLoginHeader() {
               <input
                 className={Style.txtSearch}
                 type="text"
-                placeholder="What service are you looking for today?"
+                value={filterText}
+                placeholder="What services are you looking for today?"
+                onChange={handleChange}
               ></input>
-              <button className={Style.btnSearch}>
+              <button className={Style.btnSearch} onClick={handleSearch}>
                 <svg
                   width="16"
                   height="16"

@@ -55,6 +55,7 @@ function App() {
             <PageTemplate path="/jobtype/:id" Component={JobType} />
             <PageTemplate path="/categories/jobtype/:jobid/:tenLoaiCongViec/:tenChitiet" Component={Categories} />
             <PageTemplate path="/detail/jobtype/:jobid/:tenLoaiCongViec/:tenChitiet/:id" Component={Detail} />
+            <PageTemplate path="/search" Component={Categories} />
           </Switch>
         </Suspense>
       </div>

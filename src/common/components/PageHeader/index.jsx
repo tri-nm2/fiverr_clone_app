@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import { Dropdown, Menu, Drawer } from "antd";
 import { Link, NavLink, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import mainReducer from "features/main/mainSlice";
+
 
 function PageHeader() {
   const [open, setOpen] = useState(false);
   const menuData = useSelector((state) => state.main.menuData);
+  const filterShow = useSelector((state) => state.main.filter);
+  const [filterText, setFilterText] = useState(filterShow.filterText);
+  const dispatch = useDispatch();
   const categoriesItems = menuData.map((categories) => {
     let childList = [];
     categories.dsNhomChiTietLoai.forEach((group) => {
@@ -103,10 +108,29 @@ function PageHeader() {
   ];
   const history = useHistory();
 
+  const handleChange = (e) => {
+    setFilterText(e.target.value);
+    console.log(e.target.value);
+  }
+  const handleSearch = (e) => {
+    dispatch(mainReducer.actions.addFilterText(filterText));
+ 
+    // dispatch(fetchCategoriesDataWithText(filterText));
+    history.push("/search");
+  }
   //Events
   const handleJoin = () => {
     history.push("/signup");
   };
+  function clearInput(){
+    if(filterShow.filterText === ""){
+      setFilterText("");
+    }
+  }
+ 
+  useEffect(()=>{
+    clearInput();
+  },[filterShow.filterText]);
   //Events
 
   //Other Functions
@@ -192,9 +216,11 @@ function PageHeader() {
               <input
                 className={Style.txtSearch}
                 type="text"
+                value={filterText}
                 placeholder="What service are you looking for today?"
+                onChange={(e) => {handleChange(e)}}
               ></input>
-              <button className={Style.btnSearch}>
+              <button className={Style.btnSearch} onClick={(e) => {handleSearch(e)}}>
                 <svg
                   width="16"
                   height="16"

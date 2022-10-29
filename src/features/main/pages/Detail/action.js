@@ -33,7 +33,7 @@ export const fetchDataUser= createAsyncThunk('user/addUserData', async (name) =>
             url: "/api/users/search/" + name,
         })
        
-        console.log(result.data.content);
+        // console.log(result.data.content);
        
         return result.data.content;
     }catch(err){

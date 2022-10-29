@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchDataComment, fetchDataDetail, fetchDataUser } from "./action";
 import _ from "lodash";
 import { useWindowSize } from "common/hooks/windowSize";
+import mainReducer from "features/main/mainSlice"
 import { current } from "@reduxjs/toolkit";
 
 let cx = classNames.bind(styles);
@@ -39,7 +40,7 @@ function Detail(props) {
   const menuData = useSelector((state) => state.main.menuData);
   const detailData = useSelector((state) => state.detail.detailData);
   const userData = useSelector((state) => state.detail.userData);
-
+  const userId = localStorage.getItem("id");
   const detail = detailData[0];
   const user = userData[0];
   const handlescroll = scrollPosition > 120 ? "scroll-wrapper" : "";
@@ -53,6 +54,7 @@ function Detail(props) {
     dispatch(fetchDataUser(detail.tenNguoiTao));
   }, [detail.tenNguoiTao]);
   useEffect(() => {
+    dispatch(mainReducer.actions.clearFilterText());
     const sectionAll = document.querySelectorAll("section[id]");
     window.addEventListener("scroll", () => {
       const srollY = window.pageYOffset;
@@ -71,6 +73,7 @@ function Detail(props) {
   useEffect(() => {
       const wrapper = document.querySelectorAll("div#side-bar");
       wrapper.forEach(current => setHeightSideBar(current.offsetHeight));
+     
   });
   const images = [
     {
@@ -735,7 +738,7 @@ function Detail(props) {
           <DetailFAQs />
           <DetailReviewsPackage />
           <DetailReviewsList id={id} />
-          <DetailUserComment />
+         {userId ?  <DetailUserComment /> : <></>}
         </div>
         {windowSize.width >= 1000 ? (
           <div id="side-bar" className={cx("side-bar")}>

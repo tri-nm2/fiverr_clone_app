@@ -26,3 +26,14 @@ export const fetchCategoriesData = createAsyncThunk('categories/addDataCategorie
         console.log(err);
     }
 })
+export const fetchCategoriesDataWithText = createAsyncThunk('categories/addDataCategoriesWithText', async (text) => {
+    try{
+        const result = await instace.request({
+            url: "/api/cong-viec/lay-danh-sach-cong-viec-theo-ten/" + text,
+        })
+        return result.data.content;
+    }catch(err){
+        console.log(err);
+        return [];
+    }
+})

@@ -25,7 +25,7 @@
 // export default categoriesSlice;
 import { createSlice} from '@reduxjs/toolkit';
 
-import { fetchCategoriesData } from './action';
+import { fetchCategoriesData, fetchCategoriesDataWithText } from './action';
 
 
 const categoriesSlice = createSlice({
@@ -33,17 +33,27 @@ const categoriesSlice = createSlice({
     initialState:{
         status: 'idle',
         categoriesData: [],
+       
     },
     reducers:{
         addDataCategories: (state, action) => {
             state.categoriesData = action.payload;
+        },
+        clearDataCategories: (state, action) => {
+            state.categoriesData = [];
+            state.status = 'idle';
         }
+       
     },
     extraReducers: builder => {
         builder.addCase(fetchCategoriesData.pending, (state)=>{
             state.status = 'loading';
         }).addCase(fetchCategoriesData.fulfilled, (state, action) => {
             state.categoriesData = action.payload;
+
+        }).addCase(fetchCategoriesDataWithText.fulfilled, (state, action) => {
+            state.categoriesData = action.payload;
+            
         })
     }
 });

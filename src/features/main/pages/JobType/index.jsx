@@ -7,14 +7,18 @@ import React, { useEffect, useState } from "react";
 import Style from "./style.module.css";
 import instace from "api/instance";
 import { useParams } from "react-router-dom";
+import mainReducer from "features/main/mainSlice"
+import { useDispatch } from "react-redux";
 
 function JobType() {
   const [groupList, setGroupList] = useState();
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   //Hooks
   useEffect(() => {
     fetchJobTypeGroupList();
+    dispatch(mainReducer.actions.clearFilterText());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
   //Hooks

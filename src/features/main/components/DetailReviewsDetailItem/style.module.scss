@@ -83,8 +83,9 @@
   margin-top: 8px;
   display: flex;
   .country-flag {
-    width: 20px;
+    width: 25px;
     height: 20px;
+    border-radius: 5px;
   }
   .country-name {
     color: #62646a;

@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import Style from "./style.module.css";
 import { useWindowSize } from "common/hooks/windowSize";
 import PageMobileFooter from "common/components/PageMobileFooter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HomeCarousel from "features/main/components/HomeCarousel";
 import HomeServivesCarousel from "features/main/components/HomeServicesCarousel";
 import HomeTestimonialCarousel from "features/main/components/HomeTestimonialCarousel";
@@ -15,16 +15,19 @@ import HomeMarketPlace from "features/main/components/HomeMarketPlace";
 import HomeBusiness from "features/main/components/HomeBusiness";
 import HomeLogoMaker from "features/main/components/HomeLogoMaker";
 import HomeGuide from "features/main/components/HomeGuide";
-
+import mainReducer from "features/main/mainSlice";
 function Home() {
   const windowSize = useWindowSize();
   const userInfo = useSelector((state) => state.authen.userInfo);
-
+  const dispatch = useDispatch();
   //Hooks
   useEffect(() => {
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(()=>{
+    dispatch(mainReducer.actions.clearFilterText());
+  })
   //Hooks
 
   return (

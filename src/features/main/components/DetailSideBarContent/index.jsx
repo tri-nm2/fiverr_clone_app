@@ -18,7 +18,7 @@ function DetailSideBarContent({congViec, heightSideBar}) {
       //  setscroll("mobile");
       handlescroll = "mobile";
     }
-    console.log("height",heightSideBar)
+  
     function handleCheck(index){
         setCheck(index);
     }
@@ -26,7 +26,7 @@ function DetailSideBarContent({congViec, heightSideBar}) {
       if(heightSideBar != undefined){
         window.addEventListener("scroll", () =>{
           const scrollY = window.pageYOffset;
-          console.log(scrollY);
+         
           if(scrollY >= 120 && scrollY <= heightSideBar - 300){
               setscroll("scroll-fixed");
           }else if(scrollY >= heightSideBar - 300){

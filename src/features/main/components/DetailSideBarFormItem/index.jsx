@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { fetchUserInfoAction, fetchUserRentJob } from "features/authentication/action";
 import { fetchDataDetail } from "features/main/pages/Detail/action";
 import { Modal } from "antd";
+import { useHistory } from "react-router-dom";
 
 
 let cx = classNames.bind(styles);
@@ -14,8 +15,9 @@ let cx = classNames.bind(styles);
 function DetailSideBarFormItem({data,check,congViec}) {
   const userId = localStorage.getItem("id");
   const dispatch = useDispatch();
+  const history = useHistory();
   const show = check ? "show": "";
-  console.log(congViec);
+
   function handleSubmit(e){
     e.preventDefault();
     if(userId){
@@ -28,7 +30,7 @@ function DetailSideBarFormItem({data,check,congViec}) {
         }
         bookJob(userBook);
     }else{
-      alert("Chưa đăng nhập");
+      showFail("Chưa đăng nhập");
      
     }
     
@@ -56,6 +58,18 @@ function DetailSideBarFormItem({data,check,congViec}) {
     Modal.success({
       content: <span>{message}</span>,
       onOk() {},
+      onCancel(){},
+    });
+  };
+  const showFail = (message) => {
+    Modal.warning({
+      content: <span>{message}</span>,
+      okText: "Đăng nhập",
+      onOk() {
+        history.push("/signin");
+      },
+      cancelText: "Không",
+      okCancel(){}
     });
   };
   useEffect(()=>{

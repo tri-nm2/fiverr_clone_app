@@ -4,18 +4,44 @@ import styles from "./style.module.scss";
 import { HeartOutlined } from "@ant-design/icons";
 import { useWindowSize } from "common/hooks/windowSize";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item,jobid}) {
+function CategoriesPackageItem({ item }) {
+  const menuData = useSelector((state) => state.main.menuData);
+  const getIdMenuType = () => {
+    // console.log(tenLoaiCongViec);
+    if (menuData === null) return;
+    const indexMenu = menuData.findIndex(
+      (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
+    );
+    const currentMenuItem = menuData[indexMenu];
+    const idMenuDetail = currentMenuItem.id;
+    // const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+    //   (item) => {
+    //     let index = item.dsChiTietLoai.findIndex(
+    //       (value) => value.tenChiTiet === item.tenChiTietLoai
+    //     );
+    //     if (index != -1) {
+    //       return item.dsChiTietLoai[index].id;
+    //     }
+    //     return -1;
+    //   }
+    // );
+    // let idMenuDetail = currentMenuListItem.find((value) => value != -1);
+    // console.log(idMenuDetail);
+    return idMenuDetail;
+  };
+  const jobid = getIdMenuType();
+
 
   return (
     <div className={cx("card-item-layout")}>
       <div className={cx("item-wrapper")}>
         <a className={cx("media")}>
           <div className={cx("slider")}>
-            <img src={item.congViec.hinhAnh}/>
+            <img src={item.congViec.hinhAnh} />
           </div>
         </a>
         <div className={cx("seller-info")}>
@@ -37,10 +63,18 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item,jobid}) {
               </div>
             </span>
             <div className={cx("seller-identifiers")}>
-              <span className={cx("seller-name")}><a>{item.tenNguoiTao}</a></span>
+              <span className={cx("seller-name")}>
+                <a>{item.tenNguoiTao}</a>
+              </span>
             </div>
           </div>
-          <h3><Link to={`/detail/jobtype/${jobid}/${tenLoaiCongViec}/${tenChitiet}/${item.id}`}>{item.congViec.tenCongViec}</Link></h3>
+          <h3>
+            <Link
+              to={`/detail/jobtype/${jobid}/${item.tenLoaiCongViec}/${item.tenChiTietLoai}/${item.id}`}
+            >
+              {item.congViec.tenCongViec}
+            </Link>
+          </h3>
           <div className={cx("content-info")}>
             <div className={cx("rating-info")}>
               <span className={cx("gig-rating")}>
@@ -56,23 +90,28 @@ function CategoriesPackageItem({tenLoaiCongViec,tenChitiet,item,jobid}) {
                   />
                 </svg>
               </span>
-              <span className={cx("gig-rating")}>{item.congViec.saoCongViec}</span>
+              <span className={cx("gig-rating")}>
+                {item.congViec.saoCongViec}
+              </span>
               <span>({item.congViec.danhGia})</span>
             </div>
           </div>
           <footer>
-                <div className={cx("collect-package")}>
-                    <span>
-                        <button><HeartOutlined/></button>
-                    </span>
-                </div>
-               <a  className={cx("price")}><small>Starting at</small><span>${item.congViec.giaTien}</span></a>
-
+            <div className={cx("collect-package")}>
+              <span>
+                <button>
+                  <HeartOutlined />
+                </button>
+              </span>
+            </div>
+            <a className={cx("price")}>
+              <small>Starting at</small>
+              <span>${item.congViec.giaTien}</span>
+            </a>
           </footer>
         </div>
       </div>
     </div>
-    
   );
 }
 

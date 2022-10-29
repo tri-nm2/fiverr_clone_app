@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 function DetailReviewsDetailItem({ content }) {
   const userData = useSelector(state => state.detail.userData);
   const user = userData[0];
-  console.log("content",content);
+
   function handelStar(star){
     result = [];
     for(let i = 0; i < star; i++){
@@ -18,6 +18,10 @@ function DetailReviewsDetailItem({ content }) {
     }
     return result;
   }
+  function getFirstCharacter(text){
+    let result = text;
+    return result[0];
+  } 
   return (
     <div className={cx("review-item")}>
       <div className={cx("profile-card")}>
@@ -25,7 +29,17 @@ function DetailReviewsDetailItem({ content }) {
           <div className={cx("profile-info")}>
             <div className={cx("profile-image")}>
               <label className={cx("profile-pict")}>
-                <img src={content.avatar === "" ? "https://www.clipartmax.com/png/middle/437-4374952_no-avatar-male-female.png": content.avatar} alt="seller-card" />
+             {content.avatar === ""? <div className="relative overflow-hidden text-sm	">
+            <button className="w-10 h-10 rounded-full">
+              <div
+                className="h-full w-full rounded-full bg-gray-300 flex 
+ justify-center items-center"
+              >
+                <span className="uppercase">{getFirstCharacter(content.tenNguoiBinhLuan)}</span>
+              </div>
+            </button>
+          </div>: <><img src={content.avatar} alt={"avarta"} /></>}
+             
               </label>
             </div>
             <div className={cx("profile-label")}>
@@ -36,11 +50,11 @@ function DetailReviewsDetailItem({ content }) {
                 <div className={cx("country")}>
                   <img
                     className={cx("country-flag")}
-                    src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1f2-1f1e9.png"
+                    src="https://cdn.countryflags.com/thumbs/vietnam/flag-800.png"
                     alt="MD"
                     loading="lazy"
                   />
-                  <div className={cx("country-name")}>Moldova</div>
+                  <div className={cx("country-name")}>Việt Nam</div>
                 </div>
                 <div className={cx("rating")}>
                   <div className={cx("start")}>
