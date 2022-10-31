@@ -25,23 +25,26 @@ function Categories(props) {
   const { jobid, tenLoaiCongViec, tenChitiet } = useParams();
   const menuData = useSelector((state) => state.main.menuData);
   const filterShow = useSelector((state) => state.main.filter);
+  let menuTypeId;
   const categoriesData = useSelector(
     (state) => state.categories.categoriesData
   );
   const windowSize = useWindowSize();
   const dispatch = useDispatch();
 
-  const jobMenu = menuData.findIndex(
-    (value, index) => value.tenLoaiCongViec === tenLoaiCongViec
-  );
+  // const jobMenu = menuData.findIndex(
+  //   (value, index) => value.tenLoaiCongViec === tenLoaiCongViec
+  // );
   const getIdMenuType = () => {
-    if (menuData === null) return;
+    if (menuData === null || menuData.length === 0)
+      return alert("Khong lay duoc du lieu tu menu");
+    console.log("menuData", menuData);
     const indexMenu = menuData.findIndex(
       (value) => value.tenLoaiCongViec === tenLoaiCongViec
     );
     const currentMenuItem = menuData[indexMenu];
 
-    const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+    const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai?.map(
       (item) => {
         let index = item.dsChiTietLoai.findIndex(
           (value) => value.tenChiTiet === tenChitiet
@@ -57,10 +60,13 @@ function Categories(props) {
 
     return idMenuDetail;
   };
+
   useEffect(() => {
     if (tenChitiet != undefined) {
       dispatch(fetchCategoriesData(getIdMenuType()));
       dispatch(mainReducer.actions.clearFilterText());
+      console.log("joobid", jobid);
+      console.log("jobtypeid fnction", getIdMenuType());
     } else {
       dispatch(categoriesReducer.actions.clearDataCategories());
       dispatch(fetchCategoriesDataWithText(filterShow.filterText));

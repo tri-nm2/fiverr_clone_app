@@ -8,32 +8,35 @@ import { useSelector } from "react-redux";
 
 let cx = classNames.bind(styles);
 
-function CategoriesPackageItem({ item }) {
+function CategoriesPackageItem({ item ,jobid}) {
   const menuData = useSelector((state) => state.main.menuData);
-  const getIdMenuType = () => {
-    // console.log(tenLoaiCongViec);
-    if (menuData === null) return;
-    const indexMenu = menuData.findIndex(
-      (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
-    );
-    const currentMenuItem = menuData[indexMenu];
-    const idMenuDetail = currentMenuItem.id;
-    // const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
-    //   (item) => {
-    //     let index = item.dsChiTietLoai.findIndex(
-    //       (value) => value.tenChiTiet === item.tenChiTietLoai
-    //     );
-    //     if (index != -1) {
-    //       return item.dsChiTietLoai[index].id;
-    //     }
-    //     return -1;
-    //   }
-    // );
-    // let idMenuDetail = currentMenuListItem.find((value) => value != -1);
-    // console.log(idMenuDetail);
-    return idMenuDetail;
-  };
-  const jobid = getIdMenuType();
+  const filterShow = useSelector((state) => state.main.filter);
+  // let jobid;
+  // const getIdMenuType = () => {
+  //   if (menuData === null) return;
+  //   const indexMenu = menuData.findIndex(
+  //     (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
+  //   );
+  //   const currentMenuItem = menuData[indexMenu];
+  //   const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+  //     (item) => {
+  //       let index = item.dsChiTietLoai.findIndex(
+  //         (value) => value.tenChiTiet === item.tenChiTietLoai
+  //       );
+  //       if (index != -1) {
+  //         return item.dsChiTietLoai[index].id;
+  //       }
+  //       return -1;
+  //     }
+  //   );
+  //   let idMenuDetail = currentMenuListItem.find((value) => value != -1);
+  //   console.log("idmenuDetail",idMenuDetail)
+  //   return idMenuDetail;
+  // };
+  // const checkPage = () => {
+  //   filterShow.status ? jobid = item.id : jobid = getIdMenuType();
+  // }
+  // checkPage();
 
 
   return (

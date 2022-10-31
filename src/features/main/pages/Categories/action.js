@@ -13,6 +13,7 @@
 // });
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import instace from "api/instance";
+import { result } from "lodash";
 
 export const fetchCategoriesData = createAsyncThunk('categories/addDataCategories', async (id) => {
     try{
@@ -24,6 +25,8 @@ export const fetchCategoriesData = createAsyncThunk('categories/addDataCategorie
         
     }catch(err){
         console.log(err);
+        return []
+
     }
 })
 export const fetchCategoriesDataWithText = createAsyncThunk('categories/addDataCategoriesWithText', async (text) => {
