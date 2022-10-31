@@ -18,7 +18,7 @@ function PageHeader() {
       group.dsChiTietLoai.forEach((detail) => {
         childList.push({
           key: "child" + detail.id,
-          label: <Link to="/">{detail.tenChiTiet}</Link>,
+          label: <Link to={`/categories/jobtype/${categories.id}/${categories.tenLoaiCongViec}/${detail.tenChiTiet}`}>{detail.tenChiTiet}</Link>,
         });
       });
     });
@@ -41,7 +41,7 @@ function PageHeader() {
     },
     {
       key: "item3",
-      label: <span to="/">Explore</span>,
+      label: <span to="/">Explores</span>,
       children: [
         {
           key: "sub1",
@@ -304,7 +304,7 @@ function PageHeader() {
                 handleJoin();
               }}
             >
-              Join Fiverr
+              Join Fiver
             </button>
           </div>
         }

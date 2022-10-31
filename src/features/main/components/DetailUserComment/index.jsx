@@ -26,7 +26,7 @@ function DetailUserComment(props) {
       "id": 0,
       "maCongViec": id,
       "maNguoiBinhLuan": userInfo.id,
-      "ngayBinhLuan":  new Date().toLocaleDateString() + " ",
+      "ngayBinhLuan":  "",
       "noiDung": contentComment,
       "saoBinhLuan": 0
     }

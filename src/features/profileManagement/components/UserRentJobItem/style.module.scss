@@ -10,36 +10,45 @@
 }
 .item-wrapper{
     .media{
-        padding: 10px 0;
-        display: block;
-        min-height: 85px;
+        height: 100%;
         position: relative;
+        width: 30%;
+        display: flex;
+        .slider{
+            
+            height: 100%;
+            width: 100%;
+        }
         img{
-            width: 142px;
+            width: 100%;
             height: 100%;
             display: block;
             border: 1px solid #b5b6ba;
-             border-radius: 7px;
+            border-radius: 7px;
         }
   
     }
     header{
+        height: 100%;
         .seller-info{
-            padding-top: 10px;
+            padding: 0 10px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+          
         }
     }
     
 }
 .item-wrapper{
     header, footer{
+        align-items: center;
         display: flex;
     }
     
 }
 .seller-info{
+    width: 70%;
+   
     .inner-wrapper{
         display: flex;
         box-sizing: border-box;
@@ -73,17 +82,18 @@
     }
 }
 .seller-info{
+    padding: 0 5px;
     h3{
-        font-size: 1rem;
-        font-weight: 700;
+        font-size: 1.2rem;
+        font-weight: 600;
         a{
+            display: block;
             font-weight: 400;
-            overflow: hidden;
-            padding: 0 12px 5px;
             margin-top: 5px;
+            overflow: auto;
+            width: 100%;
+            height: 50px;
             line-height: 22px;
-            word-wrap: break-word;
-            word-break: break-word;
             transition: .15s ease-in-out;
         }
     }
@@ -96,7 +106,13 @@
     }
 }
 .content-info{
-    padding: 10px 12px;
+    padding-top:10px;
+    p{
+        max-height: 90px;
+        overflow: auto;
+        padding: 10px 0;
+        padding-right: 10px;
+    }
     .rating-info{
         display: flex;
         align-items: center;
@@ -118,7 +134,7 @@
 .seller-info{
     footer{
         border-top: 1px solid #efeff0;
-        padding: 10px 12px;
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
