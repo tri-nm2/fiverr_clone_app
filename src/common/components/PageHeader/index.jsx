@@ -110,7 +110,7 @@ function PageHeader() {
 
   const handleChange = (e) => {
     setFilterText(e.target.value);
-    console.log(e.target.value);
+   
   }
   const handleSearch = (e) => {
     dispatch(mainReducer.actions.addFilterText(filterText));

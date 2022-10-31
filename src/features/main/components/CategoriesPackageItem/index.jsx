@@ -11,33 +11,38 @@ let cx = classNames.bind(styles);
 function CategoriesPackageItem({ item ,jobid}) {
   const menuData = useSelector((state) => state.main.menuData);
   const filterShow = useSelector((state) => state.main.filter);
-  // let jobid;
-  // const getIdMenuType = () => {
-  //   if (menuData === null) return;
-  //   const indexMenu = menuData.findIndex(
-  //     (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
-  //   );
-  //   const currentMenuItem = menuData[indexMenu];
-  //   const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
-  //     (item) => {
-  //       let index = item.dsChiTietLoai.findIndex(
-  //         (value) => value.tenChiTiet === item.tenChiTietLoai
-  //       );
-  //       if (index != -1) {
-  //         return item.dsChiTietLoai[index].id;
-  //       }
-  //       return -1;
-  //     }
-  //   );
-  //   let idMenuDetail = currentMenuListItem.find((value) => value != -1);
-  //   console.log("idmenuDetail",idMenuDetail)
-  //   return idMenuDetail;
-  // };
+  const getJobId = () => {
+    // console.log(tenLoaiCongViec);
+    if (menuData === null || menuData.lenghth === 0) return console.log("khong lay duoc menu");
+    const indexMenu = menuData.findIndex(
+      (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
+    );
+    if(indexMenu === -1){
+      return 0;
+    }
+    const currentMenuItem = menuData[indexMenu];
+    return currentMenuItem.id;
+    // console.log("curentMenuItem", currentMenuItem);
+    // const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+    //   (item) => {
+    //     let index = item.dsChiTietLoai.findIndex(
+    //       (value) => value.tenChiTiet === item.tenChiTietLoai
+    //     );
+    //     if (index != -1) {
+    //       return item.dsChiTietLoai[index].id;
+    //     }
+    //     return -1;
+    //   }
+    // );
+    // let idMenuDetail = currentMenuListItem.find((value) => value != -1);
+    // console.log(idMenuDetail);
+    // return idMenuDetail;
+  };
   // const checkPage = () => {
   //   filterShow.status ? jobid = item.id : jobid = getIdMenuType();
   // }
   // checkPage();
-
+  // console.log(getJobId());
 
   return (
     <div className={cx("card-item-layout")}>
@@ -73,7 +78,7 @@ function CategoriesPackageItem({ item ,jobid}) {
           </div>
           <h3>
             <Link
-              to={`/detail/jobtype/${jobid}/${item.tenLoaiCongViec}/${item.tenChiTietLoai}/${item.id}`}
+              to={`/detail/jobtype/${filterShow.status ? getJobId() : jobid}/${item.tenLoaiCongViec}/${item.tenChiTietLoai}/${item.id}`}
             >
               {item.congViec.tenCongViec}
             </Link>

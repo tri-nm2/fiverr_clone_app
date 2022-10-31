@@ -18,6 +18,7 @@ import { PlayCircleFilled } from "@ant-design/icons";
 import CategoriesFilterSelectedMobile from "features/main/components/CategoriesFilterSelectedMobile";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoriesData, fetchCategoriesDataWithText } from "./action";
+import { fetchMenuDataAction } from "features/main/action";
 
 let cx = classNames.bind(styles);
 
@@ -36,9 +37,11 @@ function Categories(props) {
   //   (value, index) => value.tenLoaiCongViec === tenLoaiCongViec
   // );
   const getIdMenuType = () => {
-    if (menuData === null || menuData.length === 0)
-      return alert("Khong lay duoc du lieu tu menu");
-    console.log("menuData", menuData);
+    if (menuData === null || menuData.length === 0){
+      console.log("Loi");
+      // dispatch(fetchMenuDataAction());
+      return;
+    }
     const indexMenu = menuData.findIndex(
       (value) => value.tenLoaiCongViec === tenLoaiCongViec
     );
@@ -65,14 +68,11 @@ function Categories(props) {
     if (tenChitiet != undefined) {
       dispatch(fetchCategoriesData(getIdMenuType()));
       dispatch(mainReducer.actions.clearFilterText());
-      console.log("joobid", jobid);
-      console.log("jobtypeid fnction", getIdMenuType());
     } else {
       dispatch(categoriesReducer.actions.clearDataCategories());
       dispatch(fetchCategoriesDataWithText(filterShow.filterText));
       dispatch(mainReducer.actions.addFilterText(filterShow.filterText));
-    }
-    // dispatch(mainReducer.actions.addFilterText(filterShow.filterText));
+    } 
   }, [tenChitiet, filterShow.filterText]);
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./style.module.scss";
 import { HeartOutlined } from "@ant-design/icons";
@@ -10,35 +10,43 @@ let cx = classNames.bind(styles);
 function CategoriesPackageItemMobile({item,jobid}) {
   const menuData = useSelector((state) => state.main.menuData);
   const filterShow = useSelector((state) => state.main.filter);
-
-  // const getIdMenuType = () => {
-  //   // console.log(tenLoaiCongViec);
-  //   if (menuData === null) return;
-  //   const indexMenu = menuData.findIndex(
-  //     (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
-  //   );
-  //   const currentMenuItem = menuData[indexMenu];
-  //   console.log("curentMenuItem", currentMenuItem);
-  //   const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
-  //     (item) => {
-  //       let index = item.dsChiTietLoai.findIndex(
-  //         (value) => value.tenChiTiet === item.tenChiTietLoai
-  //       );
-  //       if (index != -1) {
-  //         return item.dsChiTietLoai[index].id;
-  //       }
-  //       return -1;
-  //     }
-  //   );
-  //   let idMenuDetail = currentMenuListItem.find((value) => value != -1);
-  //   console.log(idMenuDetail);
-  //   return idMenuDetail;
-  // };
+  
+  const getJobId = () => {
+    // console.log(tenLoaiCongViec);
+    if (menuData === null || menuData.lenghth === 0) return console.log("khong lay duoc menu");
+    const indexMenu = menuData.findIndex(
+      (value) => value.tenLoaiCongViec === item.tenLoaiCongViec
+    );
+    if(indexMenu === -1){
+      return 0;
+    }
+    const currentMenuItem = menuData[indexMenu];
+    return currentMenuItem.id;
+    // console.log("curentMenuItem", currentMenuItem);
+    // const currentMenuListItem = currentMenuItem.dsNhomChiTietLoai.map(
+    //   (item) => {
+    //     let index = item.dsChiTietLoai.findIndex(
+    //       (value) => value.tenChiTiet === item.tenChiTietLoai
+    //     );
+    //     if (index != -1) {
+    //       return item.dsChiTietLoai[index].id;
+    //     }
+    //     return -1;
+    //   }
+    // );
+    // let idMenuDetail = currentMenuListItem.find((value) => value != -1);
+    // console.log(idMenuDetail);
+    // return idMenuDetail;
+  };
   // const checkPage = () => {
   //   filterShow.status ? jobid = item.id : jobid = getIdMenuType();
   // }
   // checkPage();
-
+  // console.log(getJobId());
+  useEffect(()=> {
+    
+    // console.log("UseEffect");
+  });
   return (
     <div className={cx("card-item-layout")}>
       <div className={cx("item-wrapper")}>
@@ -71,7 +79,7 @@ function CategoriesPackageItemMobile({item,jobid}) {
           <div className={cx("seller-info")}>
             <h3>
               <Link
-                to={`/detail/jobtype/${jobid}/${item.tenLoaiCongViec}/${item.tenChiTietLoai}/${item.id}`}
+                to={`/detail/jobtype/${filterShow.status ? getJobId() : jobid}/${item.tenLoaiCongViec}/${item.tenChiTietLoai}/${item.id}`}
               >
                 {item.congViec.tenCongViec}
               </Link>
